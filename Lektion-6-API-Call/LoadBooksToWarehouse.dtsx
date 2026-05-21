@@ -1,0 +1,2675 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/21/2026 7:55:22 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="SYSTEMENTOR-KA"
+  DTS:CreatorName="SYSTEMENTOR-KA\kimmo"
+  DTS:DTSID="{1780CB6B-DFEB-4488-B237-C7231411BF94}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="LoadBooksToWarehouse"
+  DTS:PackageType="5"
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{BB30BF6E-3624-4ABF-81EF-6034F1390DDB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{AD51A844-1D22-4F5C-B6F0-1B162756F008}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\kimmo\source\repos\11 Books.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{9C201007-FCB7-4E5B-86BA-2F3BAFA7CCBE}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\kimmo\source\repos\Categories.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CategoryId"
+              DTS:DTSID="{EF719529-8B4F-405A-880A-1FF9C04B1A2F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CategoryName"
+              DTS:DTSID="{01215886-6FBD-437D-AFBE-2B25985FE2D0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BookId"
+              DTS:DTSID="{636A4F8C-F8E6-4E35-A947-E6A1E70C898A}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.BookDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9C912194-E073-4BF7-A59C-06BE2D82AC65}"
+      DTS:ObjectName="localhost.BookDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=BookDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-LoadBooksToWarehouse-{9C912194-E073-4BF7-A59C-06BE2D82AC65}localhost.BookDW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.BookDW 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{13359D57-4E5F-444D-B61E-35712A5A8E2C}"
+      DTS:ObjectName="localhost.BookDW 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=BookDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-LoadBooksToWarehouse-{13359D57-4E5F-444D-B61E-35712A5A8E2C}localhost.BookDW 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.BookDW 2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C319CAAA-2826-4C52-8836-D7E4BEFE39C6}"
+      DTS:ObjectName="localhost.BookDW 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=BookDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-LoadBooksToWarehouse-{C319CAAA-2826-4C52-8836-D7E4BEFE39C6}localhost.BookDW 2;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.master]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E23092C0-5AD2-4FAD-8763-8AC14BFA3939}"
+      DTS:ObjectName="localhost.master">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=master;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-LoadBooksToWarehouse-{E23092C0-5AD2-4FAD-8763-8AC14BFA3939}localhost.master;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2C05D514-B602-4903-80C4-AA269A783899}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ErrorMessage">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3E0E4E60-A77B-47F6-8064-D5487041D4FE}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExchangeRate">
+      <DTS:VariableValue
+        DTS:DataType="5">0.</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Call API"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:DTSID="{5EE49E09-8308-4B1F-9608-E26379F162B4}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Call API"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_310fb5a6fbde49b785b5f209121297bb"
+          VSTAMajorVersion="17"
+          VSTAMinorVersion="0"
+          Language="CSharp"
+          ReadWriteVariables="User::ErrorMessage,User::ExchangeRate">
+          <ProjectItem
+            Name="ST_310fb5a6fbde49b785b5f209121297bb.csproj"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{29C0C7AE-3B2A-4F11-8197-7AEEDB099377}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ST_310fb5a6fbde49b785b5f209121297bb</RootNamespace>
+    <AssemblyName>ST_310fb5a6fbde49b785b5f209121297bb</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptMain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a C# project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="VSTAHostName" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" />
+        <Host Name="ScriptTask" />
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST170</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.resx"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_310fb5a6fbde49b785b5f209121297bb.Properties.Settings.get_Default():ST_310fb5a6fbde49b785b5f209121297bb.Properties.Sett" +
+    "ings")]
+
+namespace ST_310fb5a6fbde49b785b5f209121297bb.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <ProjectItem
+            Name="ScriptMain.cs"
+            Encoding="UTF8"><![CDATA[#region Help:  Introduction to the script task
+/* The Script Task allows you to perform virtually any operation that can be accomplished in
+ * a .Net application within the context of an Integration Services control flow. 
+ * 
+ * Expand the other regions which have "Help" prefixes for examples of specific ways to use
+ * Integration Services features within this script task. */
+#endregion
+
+
+#region Namespaces
+using Microsoft.SqlServer.Dts.Runtime;
+using System;
+using System.Data;
+using System.Net;
+using System.Windows.Forms;
+#endregion
+
+namespace ST_310fb5a6fbde49b785b5f209121297bb
+{
+    /// <summary>
+    /// ScriptMain is the entry point class of the script.  Do not change the name, attributes,
+    /// or parent of this class.
+    /// </summary>
+	[Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute]
+	public partial class ScriptMain : Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+	{
+        #region Help:  Using Integration Services variables and parameters in a script
+        /* To use a variable in this script, first ensure that the variable has been added to 
+         * either the list contained in the ReadOnlyVariables property or the list contained in 
+         * the ReadWriteVariables property of this script task, according to whether or not your
+         * code needs to write to the variable.  To add the variable, save this script, close this instance of
+         * Visual Studio, and update the ReadOnlyVariables and 
+         * ReadWriteVariables properties in the Script Transformation Editor window.
+         * To use a parameter in this script, follow the same steps. Parameters are always read-only.
+         * 
+         * Example of reading from a variable:
+         *  DateTime startTime = (DateTime) Dts.Variables["System::StartTime"].Value;
+         * 
+         * Example of writing to a variable:
+         *  Dts.Variables["User::myStringVariable"].Value = "new value";
+         * 
+         * Example of reading from a package parameter:
+         *  int batchId = (int) Dts.Variables["$Package::batchId"].Value;
+         *  
+         * Example of reading from a project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].Value;
+         * 
+         * Example of reading from a sensitive project parameter:
+         *  int batchId = (int) Dts.Variables["$Project::batchId"].GetSensitiveValue();
+         * */
+
+        #endregion
+
+        #region Help:  Firing Integration Services events from a script
+        /* This script task can fire events for logging purposes.
+         * 
+         * Example of firing an error event:
+         *  Dts.Events.FireError(18, "Process Values", "Bad value", "", 0);
+         * 
+         * Example of firing an information event:
+         *  Dts.Events.FireInformation(3, "Process Values", "Processing has started", "", 0, ref fireAgain)
+         * 
+         * Example of firing a warning event:
+         *  Dts.Events.FireWarning(14, "Process Values", "No values received for input", "", 0);
+         * */
+        #endregion
+
+        #region Help:  Using Integration Services connection managers in a script
+        /* Some types of connection managers can be used in this script task.  See the topic 
+         * "Working with Connection Managers Programatically" for details.
+         * 
+         * Example of using an ADO.Net connection manager:
+         *  object rawConnection = Dts.Connections["Sales DB"].AcquireConnection(Dts.Transaction);
+         *  SqlConnection myADONETConnection = (SqlConnection)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Sales DB"].ReleaseConnection(rawConnection);
+         *
+         * Example of using a File connection manager
+         *  object rawConnection = Dts.Connections["Prices.zip"].AcquireConnection(Dts.Transaction);
+         *  string filePath = (string)rawConnection;
+         *  //Use the connection in some code here, then release the connection
+         *  Dts.Connections["Prices.zip"].ReleaseConnection(rawConnection);
+         * */
+        #endregion
+
+
+		/// <summary>
+        /// This method is called when this script task executes in the control flow.
+        /// Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+        /// To open Help, press F1.
+        /// </summary>
+		public void Main()
+		{
+            // url = länk till API
+            try
+            {
+                string url = "https://opene.er-api.com/v6/latest/SEK";
+
+                // här hämtar vi resultatet från en GET
+                // WebClient = kopplar upp oss mot API
+                // DownloadString = hämtar resultatet
+                string json = new WebClient().DownloadString(url);
+
+                // Vi vill hitta GBP i vårt JSON
+                string searchText = "\"GBP\":";
+                // vi får en position i textsträngen
+                // position = så här många tecken in i strängen finns ditt resultat
+                int start = json.IndexOf(searchText) + searchText.Length;
+                int end = json.IndexOf(",", start);
+
+                // extrahera allt som kommer mellan GBP: och nästa kommatecken
+                string gbpRateText = json.Substring(start, end - start);
+
+                // System.Globalization.CultureInfo.InvariantCulture = fixar med , eller . i decimaltal
+                // i sverige 7,5
+                // i programmering 7.5
+                double gbpRate = Convert.ToDouble(gbpRateText, System.Globalization.CultureInfo.InvariantCulture);
+
+                Dts.Variables["User::ExchangeRate"].Value = gbpRate;
+
+                // Här skapas en meddelanderuta för att vi ska se värdet
+                // kommentera bort den när ni kör
+                MessageBox.Show("GBP rate = " + gbpRate.ToString());
+
+                // skickar ut ett resultat som är kopplat till röda eller gröna pilarna i flow
+                Dts.TaskResult = (int)ScriptResults.Success;
+            }
+            catch (Exception ex)
+            {
+                Dts.Variables["User::ErrorMessage"].Value = ex.Message + ex.InnerException;
+                Dts.Events.FireError(0, "ExchangeRate", ex.Message.ToString() + ex.InnerException.ToString(), "", 0);
+                Dts.TaskResult = (int)ScriptResults.Failure;
+            }
+
+        }
+
+        #region ScriptResults declaration
+        /// <summary>
+        /// This enum provides a convenient shorthand within the scope of this class for setting the
+        /// result of the script.
+        /// 
+        /// This code was generated automatically.
+        /// </summary>
+        enum ScriptResults
+        {
+            // om vi lyckas = 0
+            // om vi misslyckas = 1
+            Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success,
+            Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+        };
+        #endregion
+
+	}
+}]]></ProjectItem>
+          <ProjectItem
+            Name="Project"
+            Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>ST_310fb5a6fbde49b785b5f209121297bb</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>ST_310fb5a6fbde49b785b5f209121297bb</msb:DisplayName>
+    <msb:ProjectId>{5508D351-8791-411B-8338-788E763A4DEB}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="ST_310fb5a6fbde49b785b5f209121297bb.csproj" />
+    <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="Properties\Settings.settings" />
+    <msb:File Include="Properties\AssemblyInfo.cs" />
+    <msb:File Include="Properties\Resources.Designer.cs" />
+    <msb:File Include="Properties\Settings.Designer.cs" />
+    <msb:File Include="ScriptMain.cs" />
+  </msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\AssemblyInfo.cs"
+            Encoding="UTF8"><![CDATA[using System.Reflection;
+using System.Runtime.CompilerServices;
+
+//
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+//
+[assembly: AssemblyTitle("ST_310fb5a6fbde49b785b5f209121297bb")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ST_310fb5a6fbde49b785b5f209121297bb")]
+[assembly: AssemblyCopyright("Copyright @  2026")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+//
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Revision and Build Numbers 
+// by using the '*' as shown below:
+
+[assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Resources.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_310fb5a6fbde49b785b5f209121297bb.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+    "rceManager")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_310fb5a6fbde49b785b5f209121297bb.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+    "fo")]
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_310fb5a6fbde49b785b5f209121297bb.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+    "):Void")]
+
+namespace ST_310fb5a6fbde49b785b5f209121297bb.Properties {
+    
+    
+    /// <summary>
+    ///   A strongly-typed resource class, for looking up localized strings, etc.
+    /// </summary>
+    // This class was auto-generated by the StronglyTypedResourceBuilder
+    // class via a tool like ResGen or Visual Studio.
+    // To add or remove a member, edit your .ResX file then rerun ResGen
+    // with the /str option, or rebuild your VS project.
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    internal class Resources {
+        
+        private static global::System.Resources.ResourceManager resourceMan;
+        
+        private static global::System.Globalization.CultureInfo resourceCulture;
+        
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        internal Resources() {
+        }
+        
+        /// <summary>
+        ///   Returns the cached ResourceManager instance used by this class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if ((resourceMan == null)) {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ST_310fb5a6fbde49b785b5f209121297bb.Properties.Resources", typeof(Resources).Assembly);
+                    resourceMan = temp;
+                }
+                return resourceMan;
+            }
+        }
+        
+        /// <summary>
+        ///   Overrides the current thread's CurrentUICulture property for all
+        ///   resource lookups using this strongly typed resource class.
+        /// </summary>
+        [global::System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
+                return resourceCulture;
+            }
+            set {
+                resourceCulture = value;
+            }
+        }
+    }
+}]]></ProjectItem>
+          <BinaryItem
+            Name="ST_310fb5a6fbde49b785b5f209121297bb.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDADLTDmoAAAAAAAAAAOAAIiALATAAABIAAAAIAAAAAAAAKjEA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAANgwAABPAAAAAEAAAHgEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAMBEAAAAgAAAAEgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAHgEAAAAQAAAAAYAAAAUAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAGgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAAM
+MQAAAAAAAEgAAAACAAUA7CEAADQOAAABAAAAAAAAACAwAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAABswBgAVAQAAAQAAEXIBAABwCnMQAAAKBigRAAAKck8AAHAL
+JQdvEgAACgdvEwAAClgMJXJdAABwCG8UAAAKDQgJCFlvFQAACigWAAAKKBcAAAoTBAIoGAAACm8Z
+AAAKcmEAAHBvGgAAChEEjCAAAAFvGwAACnKHAABwEgQoHAAACigdAAAKKB4AAAomAigYAAAKFm8f
+AAAK3YMAAAATBQIoGAAACm8ZAAAKcp8AAHBvGgAAChEFbyAAAAoRBW8hAAAKJS0EJhQrBW8iAAAK
+KB0AAApvGwAACgIoGAAACm8jAAAKFnLFAABwEQVvIAAACm8iAAAKEQVvIQAACm8iAAAKKB0AAApy
+3wAAcBZvJAAACiYCKBgAAAoXbx8AAAreACoAAAABEAAAAAAAAJGRAIMPAAABHgIoJQAACioeAigm
+AAAKKq5+AQAABC0ecuEAAHDQAwAAAignAAAKbygAAApzKQAACoABAAAEfgEAAAQqGn4CAAAEKh4C
+gAIAAAQqGn4DAAAEKh4CKCoAAAoqLnMIAAAGgAMAAAQqAABCU0pCAQABAAAAAAAMAAAAdjQuMC4z
+MDMxOQAAAAAFAGwAAABgBAAAI34AAMwEAABUBgAAI1N0cmluZ3MAAAAAIAsAAFQBAAAjVVMAdAwA
+ABAAAAAjR1VJRAAAAIQMAACwAQAAI0Jsb2IAAAAAAAAAAgAAAVcdogEJAwAAAPoBMwAWAAABAAAA
+JgAAAAUAAAAGAAAACQAAAAEAAAAqAAAAAgAAABAAAAABAAAAAgAAAAMAAAAEAAAAAQAAAAUAAAAB
+AAAAAQAAAAAAywMBAAAAAAAGAE8C3AQGAN4C3AQGAJsByQQPAFAFAAAGAMgBSQQGADICSQQGABMC
+SQQGAMUCSQQGAG8CSQQGAIgCSQQGAN8BSQQGAPoBFAMKAKMCegMKABoBegMGAGQE/AMGAAME/AMG
+AH4ByQQGAOoF/AMGAI4E/AQGAG4ENAQOAE4BtQMOAK8BtQMOADYBHwQGAGMB3AQOACQG8QUGAD8D
+/AMGAC4G/AMGAHoE/AMKAKMDegMSAJIFsAASAHoAsAAGAIUA/AMWADsGpQUWAAgGpQUKAJ4EegMG
+ANAA/AMGAIwA/AMGAEoGSQQAAAAAAQAAAAAAAQABAAEAEAAUBDEAOQABAAEAAAAQAAMFXwVJAAEA
+AwAAARAAnAVfBV0AAwAHAAMBAADKBQAAQQAEAAoAEQAIBLgAEQD1ALwAEQBeAMAABgYpAMQAVoC6
+BccAVoDVAMcAUCAAAAAAhgAaBAYAAQCEIQAAAACGGLwEBgABAIwhAAAAAIMYvAQGAAEAlCEAAAAA
+kwiKBMsAAQDAIQAAAACTCN0APwABAMchAAAAAJMI6QDQAAEAzyEAAAAAlgj8BdYAAgDWIQAAAACG
+GLwEBgACAN4hAAAAAJEYwgTbAAIAAAABAAYDCQC8BAEAEQC8BAYAGQC8BAoAKQC8BBAAMQC8BBAA
+OQC8BBAAQQC8BBAASQC8BBAAUQC8BBAAWQC8BBAAYQC8BBAAaQC8BAYAiQC8BAYAsQC8BBUAwQC8
+BAYAyQC8BAYAyQAuAyUA0QAMAyoA0QBQAy8A0QAMAzMA0QBGAzkAoQAFAT8A2QCDAEQAcQDCBUsA
+6QCOBVAA8QDzA1UA+QD8AlsAAQE9A2AA0QDjBWQACQE2BmoA6QAVBgEAeQBuAGAAeQBbBHEAkQA9
+A2AA6QDYBXYAGQGyBHwAcQC8BAYAkQC8BAYAIQGeAIUAIQFGBo4AmQC8BJQAuQC8BAYACAAUAK4A
+CAAYALMAKQBzABYBLgALAO4ALgATAPcALgAbABYBLgAjAB8BLgArAEgBLgAzAEgBLgA7AEgBLgBD
+AB8BLgBLAE4BLgBTAEgBLgBbAGUBQwBjALMASQBzABYBYQB7ALMAYwBrALMAGwADAAEABAADAAAA
+jgTfAAAAEgHkAAAAAAbpAAIABAADAAIABQAFAAEABgAFAAIABwAHAASAAAABAAAApSUpUgAAAAAA
+ADEAAAAEAAAAAAAAAAAAAACcAFUAAAAAABEAAAAAAAAAAAAAAKUAWwMAAAAABAAAAAAAAAAAAAAA
+nAD8AwAAAAARAAAAAAAAAAAAAAClAAoAAAAAAAQAAAAAAAAAAAAAAJwApQUAAAAAAAAAAAEAAAAN
+BQAABQACAAAAADxNb2R1bGU+AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuTWFuYWdlZERUUwB2YWx1ZV9f
+AFNUXzMxMGZiNWE2ZmJkZTQ5Yjc4NWI1ZjIwOTEyMTI5N2JiAG1zY29ybGliAGRlZmF1bHRJbnN0
+YW5jZQBnZXRfTWVzc2FnZQBWYXJpYWJsZQBUb0RvdWJsZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRU
+eXBlRnJvbUhhbmRsZQBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5SdW50aW1lAFR5cGUARmFpbHVy
+ZQBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQByZXNvdXJjZUN1bHR1cmUAZ2V0X0ludmFyaWFudEN1
+bHR1cmUAVlNUQVJUU2NyaXB0T2JqZWN0TW9kZWxCYXNlAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNl
+AEVkaXRvckJyb3dzYWJsZVN0YXRlAENvbXBpbGVyR2VuZXJhdGVkQXR0cmlidXRlAERlYnVnZ2Vy
+Tm9uVXNlckNvZGVBdHRyaWJ1dGUARGVidWdnYWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVB
+dHRyaWJ1dGUAQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3NlbWJseVRyYWRlbWFya0F0dHJpYnV0
+ZQBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUAQXNzZW1ibHlDb25maWd1cmF0aW9uQXR0cmlidXRl
+AEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQ29tcGlsYXRpb25SZWxheGF0aW9uc0F0dHJp
+YnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRBdHRyaWJ1dGUA
+U1NJU1NjcmlwdFRhc2tFbnRyeVBvaW50QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0
+ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0dHJpYnV0ZQBzZXRfVmFsdWUAdmFsdWUASW5kZXhPZgBT
+eXN0ZW0uUnVudGltZS5WZXJzaW9uaW5nAERvd25sb2FkU3RyaW5nAFRvU3RyaW5nAFN1YnN0cmlu
+ZwBnZXRfTGVuZ3RoAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuU2NyaXB0VGFzawBNaWNyb3NvZnQuU3Fs
+U2VydmVyLkR0cy5UYXNrcy5TY3JpcHRUYXNrAFNjcmlwdE9iamVjdE1vZGVsAFN5c3RlbS5Db21w
+b25lbnRNb2RlbABTVF8zMTBmYjVhNmZiZGU0OWI3ODViNWYyMDkxMjEyOTdiYi5kbGwAZ2V0X0l0
+ZW0AU3lzdGVtAEVudW0AcmVzb3VyY2VNYW4AU2NyaXB0TWFpbgBTeXN0ZW0uQ29uZmlndXJhdGlv
+bgBTeXN0ZW0uR2xvYmFsaXphdGlvbgBTeXN0ZW0uUmVmbGVjdGlvbgBnZXRfSW5uZXJFeGNlcHRp
+b24AQ3VsdHVyZUluZm8ASUZvcm1hdFByb3ZpZGVyAGdldF9SZXNvdXJjZU1hbmFnZXIARXZlbnRz
+T2JqZWN0V3JhcHBlcgBGaXJlRXJyb3IALmN0b3IALmNjdG9yAFN5c3RlbS5EaWFnbm9zdGljcwBT
+eXN0ZW0uUnVudGltZS5Db21waWxlclNlcnZpY2VzAFN5c3RlbS5SZXNvdXJjZXMAU1RfMzEwZmI1
+YTZmYmRlNDliNzg1YjVmMjA5MTIxMjk3YmIuUHJvcGVydGllcy5SZXNvdXJjZXMucmVzb3VyY2Vz
+AERlYnVnZ2luZ01vZGVzAFNUXzMxMGZiNWE2ZmJkZTQ5Yjc4NWI1ZjIwOTEyMTI5N2JiLlByb3Bl
+cnRpZXMAZ2V0X1ZhcmlhYmxlcwBTZXR0aW5ncwBTeXN0ZW0uV2luZG93cy5Gb3JtcwBTdWNjZXNz
+AGdldF9EdHMAU2NyaXB0UmVzdWx0cwBnZXRfRXZlbnRzAENvbmNhdABPYmplY3QAU3lzdGVtLk5l
+dABnZXRfRGVmYXVsdABEaWFsb2dSZXN1bHQAc2V0X1Rhc2tSZXN1bHQAV2ViQ2xpZW50AENvbnZl
+cnQAU2hvdwBNZXNzYWdlQm94AGdldF9Bc3NlbWJseQAAAE1oAHQAdABwAHMAOgAvAC8AbwBwAGUA
+bgBlAC4AZQByAC0AYQBwAGkALgBjAG8AbQAvAHYANgAvAGwAYQB0AGUAcwB0AC8AUwBFAEsAAQ0i
+AEcAQgBQACIAOgAAAywAACVVAHMAZQByADoAOgBFAHgAYwBoAGEAbgBnAGUAUgBhAHQAZQAAF0cA
+QgBQACAAcgBhAHQAZQAgAD0AIAAAJVUAcwBlAHIAOgA6AEUAcgByAG8AcgBNAGUAcwBzAGEAZwBl
+AAAZRQB4AGMAaABhAG4AZwBlAFIAYQB0AGUAAAEAcVMAVABfADMAMQAwAGYAYgA1AGEANgBmAGIA
+ZABlADQAOQBiADcAOAA1AGIANQBmADIAMAA5ADEAMgAxADIAOQA3AGIAYgAuAFAAcgBvAHAAZQBy
+AHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAAAA+Wqg5vMtlGo4nn7OVnoTQABCABAQgDIAAB
+BSABARERBCABAQ4FIAEBEVUJBwYODggIDRI9BCABDg4EIAEIDgMgAAgFIAIIDggFIAIOCAgEAAAS
+UQYAAg0OEnEEIAASdQQgABJ5BSABEn0cBCABARwDIAAOBQACDg4OBgABEYCJDgQgABI9BSAAEoCN
+CCAFAggODg4ICAABEoCREYCVBSAAEoCZByACAQ4SgJkIt3pcVhk04IkIiYRdzYCAzJEEAAAAAAQB
+AAAAAwYSTQMGElEDBhIQAgYIAwYRFAQAABJNBQABARJRBAAAEhADAAABBAgAEk0ECAASUQQIABIQ
+CAEACAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhjZXB0aW9uVGhyb3dzAQgBAAIAAAAAACgBACNTVF8z
+MTBmYjVhNmZiZGU0OWI3ODViNWYyMDkxMjEyOTdiYgAABQEAAAAAFgEAEUNvcHlyaWdodCBAICAy
+MDI2AABJAQAaLk5FVEZyYW1ld29yayxWZXJzaW9uPXY0LjcBAFQOFEZyYW1ld29ya0Rpc3BsYXlO
+YW1lEi5ORVQgRnJhbWV3b3JrIDQuNwC0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMu
+UmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJh
+bCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRp
+bWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAAADEAAAAAAAAAAAAAGjEAAAAgAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAwxAAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwA
+AAAAAP8lACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAA
+AEgAAABYQAAAGgQAAAAAAAAAAAAAGgQ0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8A
+AAAAAL0E7/4AAAEAAAABAClSpSUAAAEAKVKlJT8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABE
+AAAAAQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8A
+bgAAAAAAAACwBHoDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAFYDAAABADAAMAAw
+ADAAMAA0AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAAAiAAEAAQBDAG8AbQBwAGEA
+bgB5AE4AYQBtAGUAAAAAAAAAAABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAA
+AAAAUwBUAF8AMwAxADAAZgBiADUAYQA2AGYAYgBkAGUANAA5AGIANwA4ADUAYgA1AGYAMgAwADkA
+MQAyADEAMgA5ADcAYgBiAAAAPgAPAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAu
+ADkANgAzADcALgAyADEAMAAzADMAAAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAA
+UwBUAF8AMwAxADAAZgBiADUAYQA2AGYAYgBkAGUANAA5AGIANwA4ADUAYgA1AGYAMgAwADkAMQAy
+ADEAMgA5ADcAYgBiAC4AZABsAGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQA
+AABDAG8AcAB5AHIAaQBnAGgAdAAgAEAAIAAgADIAMAAyADYAAAAqAAEAAQBMAGUAZwBhAGwAVABy
+AGEAZABlAG0AYQByAGsAcwAAAAAAAAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4A
+YQBtAGUAAABTAFQAXwAzADEAMABmAGIANQBhADYAZgBiAGQAZQA0ADkAYgA3ADgANQBiADUAZgAy
+ADAAOQAxADIAMQAyADkANwBiAGIALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0A
+ZQAAAAAAUwBUAF8AMwAxADAAZgBiADUAYQA2AGYAYgBkAGUANAA5AGIANwA4ADUAYgA1AGYAMgAw
+ADkAMQAyADEAMgA5ADcAYgBiAAAAQgAPAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAA
+MQAuADAALgA5ADYAMwA3AC4AMgAxADAAMwAzAAAAAABGAA8AAQBBAHMAcwBlAG0AYgBsAHkAIABW
+AGUAcgBzAGkAbwBuAAAAMQAuADAALgA5ADYAMwA3AC4AMgAxADAAMwAzAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAACwxAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
+        </ScriptProject>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\CreateDW"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{738C2CF0-F08C-4DDE-99D5-6841FEECEB79}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CreateDW"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E23092C0-5AD2-4FAD-8763-8AC14BFA3939}"
+          SQLTask:SqlStatementSource="IF DB_ID('BookDW') IS NULL    &#xA;&#x9;&#x9;CREATE DATABASE BookDW;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\CreateTable"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3CE93E6D-AFD0-41FD-9782-D528034C208E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CreateTable"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E23092C0-5AD2-4FAD-8763-8AC14BFA3939}"
+          SQLTask:SqlStatementSource="USE BookDW;&#xA;IF OBJECT_ID('dbo.BooksWithCategory', 'U') IS NULL&#xA;BEGIN&#xA;    CREATE TABLE BooksWithCategory (&#xA;        BookId INT,&#xA;        Title NVARCHAR(100),&#xA;        Author NVARCHAR(100),&#xA;        CategoryName NVARCHAR(50),&#xA;        PriceSEK FLOAT,&#xA;        PriceGBP FLOAT&#xA;    );&#xA;END&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\ImportBooksAndCategories"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2B802D22-6780-4744-9E50-767FA42931E9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="ImportBooksAndCategories"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\ImportBooksAndCategories\Calculate Price with ExchangeRate"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Calculate Price with ExchangeRate"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\ImportBooksAndCategories\Calculate Price with ExchangeRate.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Calculate Price with ExchangeRate.Inputs[Derived Column Input].Columns[PriceSEK]"
+                      cachedDataType="cy"
+                      cachedName="PriceSEK"
+                      lineageId="Package\ImportBooksAndCategories\Merge Books and Categories.Outputs[Merge Join Output].Columns[PriceSEK]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ImportBooksAndCategories\Calculate Price with ExchangeRate.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\ImportBooksAndCategories\Calculate Price with ExchangeRate.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Calculate Price with ExchangeRate.Outputs[Derived Column Output].Columns[PriceGBP]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\ImportBooksAndCategories\Calculate Price with ExchangeRate.Outputs[Derived Column Output].Columns[PriceGBP]"
+                      name="PriceGBP"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\ImportBooksAndCategories\Merge Books and Categories.Outputs[Merge Join Output].Columns[PriceSEK]} * @[User::ExchangeRate]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">PriceSEK * @[User::ExchangeRate]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ImportBooksAndCategories\Calculate Price with ExchangeRate.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\ImportBooksAndCategories\Calculate Price with ExchangeRate.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Calculate Price with ExchangeRate.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ImportBooksAndCategories\Calculate Price with ExchangeRate.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Calculate Price with ExchangeRate.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ImportBooksAndCategories\Calculate Price with ExchangeRate.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ImportBooksAndCategories\Convert between unicode and non-unicode"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Convert between unicode and non-unicode"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\ImportBooksAndCategories\Convert between unicode and non-unicode.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Convert between unicode and non-unicode.Inputs[Data Conversion Input].Columns[CategoryName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CategoryName"
+                      lineageId="Package\ImportBooksAndCategories\Merge Books and Categories.Outputs[Merge Join Output].Columns[CategoryName]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ImportBooksAndCategories\Convert between unicode and non-unicode.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\ImportBooksAndCategories\Convert between unicode and non-unicode.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Convert between unicode and non-unicode.Outputs[Data Conversion Output].Columns[CategoryName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\ImportBooksAndCategories\Convert between unicode and non-unicode.Outputs[Data Conversion Output].Columns[CategoryName]"
+                      name="CategoryName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\ImportBooksAndCategories\Merge Books and Categories.Outputs[Merge Join Output].Columns[CategoryName]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ImportBooksAndCategories\Convert between unicode and non-unicode.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\ImportBooksAndCategories\Convert between unicode and non-unicode.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Convert between unicode and non-unicode.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ImportBooksAndCategories\Convert between unicode and non-unicode.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Convert between unicode and non-unicode.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ImportBooksAndCategories\Convert between unicode and non-unicode.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ImportBooksAndCategories\Data Conversion CSV - BookID to INT"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion CSV - BookID to INT"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\ImportBooksAndCategories\Data Conversion CSV - BookID to INT.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Data Conversion CSV - BookID to INT.Inputs[Data Conversion Input].Columns[BookId]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="BookId"
+                      lineageId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Output].Columns[BookId]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ImportBooksAndCategories\Data Conversion CSV - BookID to INT.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\ImportBooksAndCategories\Data Conversion CSV - BookID to INT.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Data Conversion CSV - BookID to INT.Outputs[Data Conversion Output].Columns[BookId_INT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\ImportBooksAndCategories\Data Conversion CSV - BookID to INT.Outputs[Data Conversion Output].Columns[BookId_INT]"
+                      name="BookId_INT"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Output].Columns[BookId]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ImportBooksAndCategories\Data Conversion CSV - BookID to INT.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\ImportBooksAndCategories\Data Conversion CSV - BookID to INT.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Data Conversion CSV - BookID to INT.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ImportBooksAndCategories\Data Conversion CSV - BookID to INT.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Data Conversion CSV - BookID to INT.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ImportBooksAndCategories\Data Conversion CSV - BookID to INT.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ImportBooksAndCategories\Data Conversion Excel - BookID to INT"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion Excel - BookID to INT"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\ImportBooksAndCategories\Data Conversion Excel - BookID to INT.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Data Conversion Excel - BookID to INT.Inputs[Data Conversion Input].Columns[BookId]"
+                      cachedDataType="i4"
+                      cachedName="BookId"
+                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[BookId]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ImportBooksAndCategories\Data Conversion Excel - BookID to INT.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\ImportBooksAndCategories\Data Conversion Excel - BookID to INT.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Data Conversion Excel - BookID to INT.Outputs[Data Conversion Output].Columns[BookId_INT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\ImportBooksAndCategories\Data Conversion Excel - BookID to INT.Outputs[Data Conversion Output].Columns[BookId_INT]"
+                      name="BookId_INT"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[BookId]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\ImportBooksAndCategories\Data Conversion Excel - BookID to INT.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\ImportBooksAndCategories\Data Conversion Excel - BookID to INT.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Data Conversion Excel - BookID to INT.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ImportBooksAndCategories\Data Conversion Excel - BookID to INT.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Data Conversion Excel - BookID to INT.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ImportBooksAndCategories\Data Conversion Excel - BookID to INT.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ImportBooksAndCategories\Extract Books"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Extract Books"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Books$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ImportBooksAndCategories\Extract Books.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[BookId]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].ExternalColumns[BookId]"
+                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[BookId]"
+                      name="BookId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[Title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].ExternalColumns[Title]"
+                      length="255"
+                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[Title]"
+                      name="Title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[Author]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].ExternalColumns[Author]"
+                      length="255"
+                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[Author]"
+                      name="Author"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[PriceSEK]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].ExternalColumns[PriceSEK]"
+                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[PriceSEK]"
+                      name="PriceSEK"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].ExternalColumns[BookId]"
+                      dataType="r8"
+                      name="BookId" />
+                    <externalMetadataColumn
+                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].ExternalColumns[Title]"
+                      dataType="wstr"
+                      length="255"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].ExternalColumns[Author]"
+                      dataType="wstr"
+                      length="255"
+                      name="Author" />
+                    <externalMetadataColumn
+                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].ExternalColumns[PriceSEK]"
+                      dataType="cy"
+                      name="PriceSEK" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[BookId]"
+                      dataType="r8"
+                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[BookId]"
+                      name="BookId" />
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[Title]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[Title]"
+                      name="Title" />
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[Author]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[Author]"
+                      name="Author" />
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[PriceSEK]"
+                      dataType="cy"
+                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[PriceSEK]"
+                      name="PriceSEK" />
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ImportBooksAndCategories\Extract Categories"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Extract Categories"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ImportBooksAndCategories\Extract Categories.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Output].Columns[CategoryId]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Output].ExternalColumns[CategoryId]"
+                      length="50"
+                      lineageId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Output].Columns[CategoryId]"
+                      name="CategoryId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Output].Columns[CategoryName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Output].ExternalColumns[CategoryName]"
+                      length="50"
+                      lineageId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Output].Columns[CategoryName]"
+                      name="CategoryName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Output].Columns[BookId]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Output].ExternalColumns[BookId]"
+                      length="50"
+                      lineageId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Output].Columns[BookId]"
+                      name="BookId"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Output].ExternalColumns[CategoryId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CategoryId" />
+                    <externalMetadataColumn
+                      refId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Output].ExternalColumns[CategoryName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CategoryName" />
+                    <externalMetadataColumn
+                      refId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Output].ExternalColumns[BookId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="BookId" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ImportBooksAndCategories\Merge Books and Categories"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Books and Categories"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\ImportBooksAndCategories\Merge Books and Categories.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Merge Books and Categories.Inputs[Merge Join Left Input].Columns[BookId_INT]"
+                      cachedDataType="i4"
+                      cachedName="BookId_INT"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\ImportBooksAndCategories\Sort By Excel BookID.Outputs[Sort Output].Columns[BookId_INT]" />
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Merge Books and Categories.Inputs[Merge Join Left Input].Columns[Title]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Title"
+                      lineageId="Package\ImportBooksAndCategories\Sort By Excel BookID.Outputs[Sort Output].Columns[Title]" />
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Merge Books and Categories.Inputs[Merge Join Left Input].Columns[Author]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Author"
+                      lineageId="Package\ImportBooksAndCategories\Sort By Excel BookID.Outputs[Sort Output].Columns[Author]" />
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Merge Books and Categories.Inputs[Merge Join Left Input].Columns[PriceSEK]"
+                      cachedDataType="cy"
+                      cachedName="PriceSEK"
+                      lineageId="Package\ImportBooksAndCategories\Sort By Excel BookID.Outputs[Sort Output].Columns[PriceSEK]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\ImportBooksAndCategories\Merge Books and Categories.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Merge Books and Categories.Inputs[Merge Join Right Input].Columns[BookId_INT]"
+                      cachedDataType="i4"
+                      cachedName="BookId_INT"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\ImportBooksAndCategories\Sort By CSV BookID.Outputs[Sort Output].Columns[BookId_INT]" />
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Merge Books and Categories.Inputs[Merge Join Right Input].Columns[CategoryId]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CategoryId"
+                      lineageId="Package\ImportBooksAndCategories\Sort By CSV BookID.Outputs[Sort Output].Columns[CategoryId]" />
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Merge Books and Categories.Inputs[Merge Join Right Input].Columns[CategoryName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CategoryName"
+                      lineageId="Package\ImportBooksAndCategories\Sort By CSV BookID.Outputs[Sort Output].Columns[CategoryName]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ImportBooksAndCategories\Merge Books and Categories.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Merge Books and Categories.Outputs[Merge Join Output].Columns[Title]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ImportBooksAndCategories\Merge Books and Categories.Outputs[Merge Join Output].Columns[Title]"
+                      name="Title">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\ImportBooksAndCategories\Merge Books and Categories.Inputs[Merge Join Left Input].Columns[Title]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Merge Books and Categories.Outputs[Merge Join Output].Columns[Author]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ImportBooksAndCategories\Merge Books and Categories.Outputs[Merge Join Output].Columns[Author]"
+                      name="Author">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\ImportBooksAndCategories\Merge Books and Categories.Inputs[Merge Join Left Input].Columns[Author]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Merge Books and Categories.Outputs[Merge Join Output].Columns[PriceSEK]"
+                      dataType="cy"
+                      lineageId="Package\ImportBooksAndCategories\Merge Books and Categories.Outputs[Merge Join Output].Columns[PriceSEK]"
+                      name="PriceSEK">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\ImportBooksAndCategories\Merge Books and Categories.Inputs[Merge Join Left Input].Columns[PriceSEK]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Merge Books and Categories.Outputs[Merge Join Output].Columns[BookId_INT]"
+                      dataType="i4"
+                      lineageId="Package\ImportBooksAndCategories\Merge Books and Categories.Outputs[Merge Join Output].Columns[BookId_INT]"
+                      name="BookId_INT"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\ImportBooksAndCategories\Merge Books and Categories.Inputs[Merge Join Left Input].Columns[BookId_INT]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Merge Books and Categories.Outputs[Merge Join Output].Columns[CategoryId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\ImportBooksAndCategories\Merge Books and Categories.Outputs[Merge Join Output].Columns[CategoryId]"
+                      name="CategoryId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\ImportBooksAndCategories\Merge Books and Categories.Inputs[Merge Join Right Input].Columns[CategoryId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Merge Books and Categories.Outputs[Merge Join Output].Columns[CategoryName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\ImportBooksAndCategories\Merge Books and Categories.Outputs[Merge Join Output].Columns[CategoryName]"
+                      name="CategoryName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\ImportBooksAndCategories\Merge Books and Categories.Inputs[Merge Join Right Input].Columns[CategoryName]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ImportBooksAndCategories\Save to BookDW"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Save to BookDW"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[BooksWithCategory]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\ImportBooksAndCategories\Save to BookDW.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.BookDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.BookDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\ImportBooksAndCategories\Save to BookDW.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Save to BookDW.Inputs[OLE DB Destination Input].Columns[Title]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Title"
+                      externalMetadataColumnId="Package\ImportBooksAndCategories\Save to BookDW.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
+                      lineageId="Package\ImportBooksAndCategories\Merge Books and Categories.Outputs[Merge Join Output].Columns[Title]" />
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Save to BookDW.Inputs[OLE DB Destination Input].Columns[Author]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Author"
+                      externalMetadataColumnId="Package\ImportBooksAndCategories\Save to BookDW.Inputs[OLE DB Destination Input].ExternalColumns[Author]"
+                      lineageId="Package\ImportBooksAndCategories\Merge Books and Categories.Outputs[Merge Join Output].Columns[Author]" />
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Save to BookDW.Inputs[OLE DB Destination Input].Columns[PriceSEK]"
+                      cachedDataType="cy"
+                      cachedName="PriceSEK"
+                      externalMetadataColumnId="Package\ImportBooksAndCategories\Save to BookDW.Inputs[OLE DB Destination Input].ExternalColumns[PriceSEK]"
+                      lineageId="Package\ImportBooksAndCategories\Merge Books and Categories.Outputs[Merge Join Output].Columns[PriceSEK]" />
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Save to BookDW.Inputs[OLE DB Destination Input].Columns[PriceGBP]"
+                      cachedDataType="r8"
+                      cachedName="PriceGBP"
+                      externalMetadataColumnId="Package\ImportBooksAndCategories\Save to BookDW.Inputs[OLE DB Destination Input].ExternalColumns[PriceGBP]"
+                      lineageId="Package\ImportBooksAndCategories\Calculate Price with ExchangeRate.Outputs[Derived Column Output].Columns[PriceGBP]" />
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Save to BookDW.Inputs[OLE DB Destination Input].Columns[BookId_INT]"
+                      cachedDataType="i4"
+                      cachedName="BookId_INT"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\ImportBooksAndCategories\Save to BookDW.Inputs[OLE DB Destination Input].ExternalColumns[BookId]"
+                      lineageId="Package\ImportBooksAndCategories\Merge Books and Categories.Outputs[Merge Join Output].Columns[BookId_INT]" />
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Save to BookDW.Inputs[OLE DB Destination Input].Columns[CategoryName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="CategoryName"
+                      externalMetadataColumnId="Package\ImportBooksAndCategories\Save to BookDW.Inputs[OLE DB Destination Input].ExternalColumns[CategoryName]"
+                      lineageId="Package\ImportBooksAndCategories\Convert between unicode and non-unicode.Outputs[Data Conversion Output].Columns[CategoryName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\ImportBooksAndCategories\Save to BookDW.Inputs[OLE DB Destination Input].ExternalColumns[BookId]"
+                      dataType="i4"
+                      name="BookId" />
+                    <externalMetadataColumn
+                      refId="Package\ImportBooksAndCategories\Save to BookDW.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
+                      dataType="wstr"
+                      length="100"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\ImportBooksAndCategories\Save to BookDW.Inputs[OLE DB Destination Input].ExternalColumns[Author]"
+                      dataType="wstr"
+                      length="100"
+                      name="Author" />
+                    <externalMetadataColumn
+                      refId="Package\ImportBooksAndCategories\Save to BookDW.Inputs[OLE DB Destination Input].ExternalColumns[CategoryName]"
+                      dataType="wstr"
+                      length="50"
+                      name="CategoryName" />
+                    <externalMetadataColumn
+                      refId="Package\ImportBooksAndCategories\Save to BookDW.Inputs[OLE DB Destination Input].ExternalColumns[PriceSEK]"
+                      dataType="r8"
+                      name="PriceSEK" />
+                    <externalMetadataColumn
+                      refId="Package\ImportBooksAndCategories\Save to BookDW.Inputs[OLE DB Destination Input].ExternalColumns[PriceGBP]"
+                      dataType="r8"
+                      name="PriceGBP" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ImportBooksAndCategories\Save to BookDW.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\ImportBooksAndCategories\Save to BookDW.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Save to BookDW.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\ImportBooksAndCategories\Save to BookDW.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Save to BookDW.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\ImportBooksAndCategories\Save to BookDW.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ImportBooksAndCategories\Sort By CSV BookID"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort By CSV BookID"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\ImportBooksAndCategories\Sort By CSV BookID.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Sort By CSV BookID.Inputs[Sort Input].Columns[CategoryId]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CategoryId"
+                      lineageId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Output].Columns[CategoryId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Sort By CSV BookID.Inputs[Sort Input].Columns[CategoryName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CategoryName"
+                      lineageId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Output].Columns[CategoryName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Sort By CSV BookID.Inputs[Sort Input].Columns[BookId_INT]"
+                      cachedDataType="i4"
+                      cachedName="BookId_INT"
+                      lineageId="Package\ImportBooksAndCategories\Data Conversion CSV - BookID to INT.Outputs[Data Conversion Output].Columns[BookId_INT]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ImportBooksAndCategories\Sort By CSV BookID.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Sort By CSV BookID.Outputs[Sort Output].Columns[CategoryId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\ImportBooksAndCategories\Sort By CSV BookID.Outputs[Sort Output].Columns[CategoryId]"
+                      name="CategoryId">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Output].Columns[CategoryId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Sort By CSV BookID.Outputs[Sort Output].Columns[CategoryName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\ImportBooksAndCategories\Sort By CSV BookID.Outputs[Sort Output].Columns[CategoryName]"
+                      name="CategoryName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Output].Columns[CategoryName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Sort By CSV BookID.Outputs[Sort Output].Columns[BookId_INT]"
+                      dataType="i4"
+                      lineageId="Package\ImportBooksAndCategories\Sort By CSV BookID.Outputs[Sort Output].Columns[BookId_INT]"
+                      name="BookId_INT"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\ImportBooksAndCategories\Data Conversion CSV - BookID to INT.Outputs[Data Conversion Output].Columns[BookId_INT]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\ImportBooksAndCategories\Sort By Excel BookID"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort By Excel BookID"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\ImportBooksAndCategories\Sort By Excel BookID.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Sort By Excel BookID.Inputs[Sort Input].Columns[Title]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Title"
+                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[Title]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Sort By Excel BookID.Inputs[Sort Input].Columns[Author]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Author"
+                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[Author]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Sort By Excel BookID.Inputs[Sort Input].Columns[PriceSEK]"
+                      cachedDataType="cy"
+                      cachedName="PriceSEK"
+                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[PriceSEK]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\ImportBooksAndCategories\Sort By Excel BookID.Inputs[Sort Input].Columns[BookId_INT]"
+                      cachedDataType="i4"
+                      cachedName="BookId_INT"
+                      lineageId="Package\ImportBooksAndCategories\Data Conversion Excel - BookID to INT.Outputs[Data Conversion Output].Columns[BookId_INT]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\ImportBooksAndCategories\Sort By Excel BookID.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Sort By Excel BookID.Outputs[Sort Output].Columns[Title]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ImportBooksAndCategories\Sort By Excel BookID.Outputs[Sort Output].Columns[Title]"
+                      name="Title">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[Title]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Sort By Excel BookID.Outputs[Sort Output].Columns[Author]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\ImportBooksAndCategories\Sort By Excel BookID.Outputs[Sort Output].Columns[Author]"
+                      name="Author">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[Author]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Sort By Excel BookID.Outputs[Sort Output].Columns[PriceSEK]"
+                      dataType="cy"
+                      lineageId="Package\ImportBooksAndCategories\Sort By Excel BookID.Outputs[Sort Output].Columns[PriceSEK]"
+                      name="PriceSEK">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[PriceSEK]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\ImportBooksAndCategories\Sort By Excel BookID.Outputs[Sort Output].Columns[BookId_INT]"
+                      dataType="i4"
+                      lineageId="Package\ImportBooksAndCategories\Sort By Excel BookID.Outputs[Sort Output].Columns[BookId_INT]"
+                      name="BookId_INT"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\ImportBooksAndCategories\Data Conversion Excel - BookID to INT.Outputs[Data Conversion Output].Columns[BookId_INT]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\ImportBooksAndCategories.Paths[Data Conversion Output]"
+              endId="Package\ImportBooksAndCategories\Sort By Excel BookID.Inputs[Sort Input]"
+              name="Data Conversion Output"
+              startId="Package\ImportBooksAndCategories\Data Conversion Excel - BookID to INT.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\ImportBooksAndCategories.Paths[Data Conversion Output1]"
+              endId="Package\ImportBooksAndCategories\Sort By CSV BookID.Inputs[Sort Input]"
+              name="Data Conversion Output"
+              startId="Package\ImportBooksAndCategories\Data Conversion CSV - BookID to INT.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\ImportBooksAndCategories.Paths[Data Conversion Output2]"
+              endId="Package\ImportBooksAndCategories\Save to BookDW.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\ImportBooksAndCategories\Convert between unicode and non-unicode.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\ImportBooksAndCategories.Paths[Derived Column Output]"
+              endId="Package\ImportBooksAndCategories\Convert between unicode and non-unicode.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\ImportBooksAndCategories\Calculate Price with ExchangeRate.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\ImportBooksAndCategories.Paths[Excel Source Output]"
+              endId="Package\ImportBooksAndCategories\Data Conversion Excel - BookID to INT.Inputs[Data Conversion Input]"
+              name="Excel Source Output"
+              startId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\ImportBooksAndCategories.Paths[Flat File Source Output]"
+              endId="Package\ImportBooksAndCategories\Data Conversion CSV - BookID to INT.Inputs[Data Conversion Input]"
+              name="Flat File Source Output"
+              startId="Package\ImportBooksAndCategories\Extract Categories.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\ImportBooksAndCategories.Paths[Merge Join Output]"
+              endId="Package\ImportBooksAndCategories\Calculate Price with ExchangeRate.Inputs[Derived Column Input]"
+              name="Merge Join Output"
+              startId="Package\ImportBooksAndCategories\Merge Books and Categories.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\ImportBooksAndCategories.Paths[Sort Output]"
+              endId="Package\ImportBooksAndCategories\Merge Books and Categories.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\ImportBooksAndCategories\Sort By Excel BookID.Outputs[Sort Output]" />
+            <path
+              refId="Package\ImportBooksAndCategories.Paths[Sort Output1]"
+              endId="Package\ImportBooksAndCategories\Merge Books and Categories.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\ImportBooksAndCategories\Sort By CSV BookID.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Write To Error Log Table in Database"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{21174C6D-65AE-40A0-8C57-3C0F44194F83}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Write To Error Log Table in Database"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C319CAAA-2826-4C52-8836-D7E4BEFE39C6}"
+          SQLTask:SqlStatementSource="INSERT INTO dbo.SSIS_ErrorLog (PackageName, ErrorMessage, ErrorTime)&#xA;VALUES (?, ?, GETDATE())" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="NewParameterName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="0" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="NewParameterName"
+            SQLTask:DtsVariableName="User::ErrorMessage"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{376CC2EC-06CF-42F2-8651-A785D316444C}"
+      DTS:From="Package\CreateDW"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\CreateTable" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{7664372C-2C57-48F6-8E3C-8D15101A654D}"
+      DTS:From="Package\CreateTable"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\ImportBooksAndCategories" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{353AD3DA-2D1D-45D5-91CC-AF19FD49EAD8}"
+      DTS:From="Package\Call API"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\CreateDW" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{B0ECF853-9C22-42EB-9BDE-CD4B3094075F}"
+      DTS:From="Package\Call API"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Write To Error Log Table in Database"
+      DTS:Value="1" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="119,42"
+          Id="Package\Call API"
+          TopLeft="355.833333333333,14.1666666666667" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\CreateDW"
+          TopLeft="357.5,115" />
+        <NodeLayout
+          Size="140,42"
+          Id="Package\CreateTable"
+          TopLeft="350.833333333333,240.833333333333" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\ImportBooksAndCategories"
+          TopLeft="313.333333333333,384.166666666667" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="421.666666666667,157">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,83.8333333333334"
+              Start="0,0"
+              End="0,76.3333333333334">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.3333333333334" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="420.583333333333,282.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,101.333333333333"
+              Start="0,0"
+              End="0,93.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,93.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="418.916666666667,56.1666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58.8333333333333"
+              Start="0,0"
+              End="0,51.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.3333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="261,42"
+          Id="Package\Write To Error Log Table in Database"
+          TopLeft="598.615384615385,99.2307692307692" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="433.833333333333,56.1666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="295.282051282052,43.0641025641025"
+              Start="0,0"
+              End="295.282051282052,35.5641025641025">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.5684398520219" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.5684398520219"
+                    Point2="0,17.5684398520219"
+                    Point3="4,17.5684398520219" />
+                  <mssgle:LineSegment
+                    End="291.282051282052,17.5684398520219" />
+                  <mssgle:CubicBezierSegment
+                    Point1="291.282051282052,17.5684398520219"
+                    Point2="295.282051282052,17.5684398520219"
+                    Point3="295.282051282052,21.5684398520219" />
+                  <mssgle:LineSegment
+                    End="295.282051282052,35.5641025641025" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="132.399677984776,22.5684398520219,30.4826953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\ImportBooksAndCategories">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="169,42"
+          Id="Package\ImportBooksAndCategories\Extract Categories"
+          TopLeft="807,156" />
+        <NodeLayout
+          Size="269,42"
+          Id="Package\ImportBooksAndCategories\Data Conversion Excel - BookID to INT"
+          TopLeft="436,278" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\ImportBooksAndCategories\Sort By Excel BookID"
+          TopLeft="482,362" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\ImportBooksAndCategories\Sort By CSV BookID"
+          TopLeft="793,362" />
+        <NodeLayout
+          Size="147,42"
+          Id="Package\ImportBooksAndCategories\Extract Books"
+          TopLeft="497,158" />
+        <NodeLayout
+          Size="265,42"
+          Id="Package\ImportBooksAndCategories\Data Conversion CSV - BookID to INT"
+          TopLeft="753,276" />
+        <NodeLayout
+          Size="221,42"
+          Id="Package\ImportBooksAndCategories\Merge Books and Categories"
+          TopLeft="624,509" />
+        <EdgeLayout
+          Id="Package\ImportBooksAndCategories.Paths[Sort Output1]"
+          TopLeft="882.5,404">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-112.5,105"
+              Start="0,0"
+              End="-112.5,97.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.5471698113208" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,58.5471698113208"
+                    Point2="0,62.5471698113208"
+                    Point3="-4,62.5471698113208" />
+                  <mssgle:LineSegment
+                    End="-108.5,62.5471698113208" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-108.5,62.5471698113208"
+                    Point2="-112.5,62.5471698113208"
+                    Point3="-112.5,66.5471698113208" />
+                  <mssgle:LineSegment
+                    End="-112.5,97.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ImportBooksAndCategories.Paths[Sort Output]"
+          TopLeft="574,404">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="125,105"
+              Start="0,0"
+              End="125,97.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.5471698113208" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,58.5471698113208"
+                    Point2="0,62.5471698113208"
+                    Point3="4,62.5471698113208" />
+                  <mssgle:LineSegment
+                    End="121,62.5471698113208" />
+                  <mssgle:CubicBezierSegment
+                    Point1="121,62.5471698113208"
+                    Point2="125,62.5471698113208"
+                    Point3="125,66.5471698113208" />
+                  <mssgle:LineSegment
+                    End="125,97.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ImportBooksAndCategories.Paths[Flat File Source Output]"
+          TopLeft="888.5,198">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,78"
+              Start="0,0"
+              End="0,70.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ImportBooksAndCategories.Paths[Excel Source Output]"
+          TopLeft="570.5,200">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,78"
+              Start="0,0"
+              End="0,70.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ImportBooksAndCategories.Paths[Data Conversion Output1]"
+          TopLeft="884,318">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ImportBooksAndCategories.Paths[Data Conversion Output]"
+          TopLeft="572.25,320">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="251,42"
+          Id="Package\ImportBooksAndCategories\Calculate Price with ExchangeRate"
+          TopLeft="614,620" />
+        <EdgeLayout
+          Id="Package\ImportBooksAndCategories.Paths[Merge Join Output]"
+          TopLeft="737,551">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69"
+              Start="0,0"
+              End="0,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="162,42"
+          Id="Package\ImportBooksAndCategories\Save to BookDW"
+          TopLeft="658,796" />
+        <NodeLayout
+          Size="288,42"
+          Id="Package\ImportBooksAndCategories\Convert between unicode and non-unicode"
+          TopLeft="598,693" />
+        <EdgeLayout
+          Id="Package\ImportBooksAndCategories.Paths[Derived Column Output]"
+          TopLeft="740.75,662">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31"
+              Start="0,0"
+              End="0,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ImportBooksAndCategories.Paths[Data Conversion Output2]"
+          TopLeft="740.5,735">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61"
+              Start="0,0"
+              End="0,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\ImportBooksAndCategories\Extract Books">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\ImportBooksAndCategories\Save to BookDW">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
