@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="LoadBooksToWarehouse"
   DTS:PackageType="5"
-  DTS:VersionBuild="43"
-  DTS:VersionGUID="{E773E27B-ABEE-4D67-B096-492AE55D0834}">
+  DTS:VersionBuild="44"
+  DTS:VersionGUID="{3D98C447-F7E4-45C4-8A69-51E958A4B411}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,7 +25,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="0"
           DTS:ConnectRetryInterval="0"
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\kimmo\source\repos\11 Books(1).xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\kimmo\source\repos\11 Books(1).xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -530,31 +530,11 @@ namespace ST_310fb5a6fbde49b785b5f209121297bb
             // try = vi testar denna kod och om något går fel så hamnar i i catch-blocket nedan
             try
             {
-                // url = länk till API
                 string url = "https://opene.er-api.com/v6/latest/SEK";
-
-                // här hämtar vi resultatet från en GET
-                // WebClient = kopplar upp oss mot API
-                // DownloadString = hämtar resultatet
                 string json = new WebClient().DownloadString(url);
-
-                // Vi vill hitta GBP i vårt JSON
-
                 MoneyData moneyData = JsonConvert.DeserializeObject<MoneyData>(json);
-
                 double GBP = moneyData.rates.GBP;
-
-                // System.Globalization.CultureInfo.InvariantCulture = fixar med , eller . i decimaltal
-                // i sverige 7,5
-                // i programmering 7.5
-
                 Dts.Variables["User::ExchangeRate"].Value = GBP;
-
-                // Här skapas en meddelanderuta för att vi ska se värdet
-                // kommentera bort den när ni kör
-                // MessageBox.Show("GBP rate = " + gbpRate.ToString());
-
-                // skickar ut ett resultat som är kopplat till röda eller gröna pilarna i flow
                 Dts.TaskResult = (int)ScriptResults.Success;
             }
             // fånga felet från try ovan
@@ -593,7 +573,7 @@ namespace ST_310fb5a6fbde49b785b5f209121297bb
     <msb:CodeName>ST_310fb5a6fbde49b785b5f209121297bb</msb:CodeName>
     <msb:Language>msBuild</msb:Language>
     <msb:DisplayName>ST_310fb5a6fbde49b785b5f209121297bb</msb:DisplayName>
-    <msb:ProjectId>{5D7443C6-AF8E-4CFC-AE4D-74B4654217E6}</msb:ProjectId>
+    <msb:ProjectId>{5D6F9898-ACDE-4C49-8F3F-A6296F93D043}</msb:ProjectId>
   </msb:PropertyGroup>
   <msb:ItemGroup>
     <msb:Project Include="ST_310fb5a6fbde49b785b5f209121297bb.csproj" />
@@ -905,7 +885,7 @@ namespace ST_310fb5a6fbde49b785b5f209121297bb.Properties {
           <BinaryItem
             Name="ST_310fb5a6fbde49b785b5f209121297bb.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDACHlDmoAAAAAAAAAAOAAIiALATAAAGYAAAAIAAAAAAAAcoUA
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDALTqDmoAAAAAAAAAAOAAIiALATAAAGYAAAAIAAAAAAAAcoUA
 AAAgAAAAoAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAADgAAAAAgAAAAAAAAMAYIUAABAA
 ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAACCFAABPAAAAAKAAAHgEAAAAAAAAAAAAAAAAAAAA
 AAAAAMAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1211,7 +1191,7 @@ LQEtAQIALgEvAQEALwEvAQIAMAExAQEAMQExAQIAMgEzAQEAMwEzAQIANAE1AQEANQE1AQIANgE3
 AQEANwE3AQIAOAE5AQEAOQE5AQIAOgE7AQEAOwE7AQIAPAE9AQEAPQE9AQIAPgE/AQEAPwE/AQIA
 QAFBAQEAQQFBAQIAQgFDAQEAQwFDAQIARAFFAQEARQFFAQIARgFHAQEARwFHAQIASAFJAQEASQFJ
 AQIASgFLAQEASwFLAQIATAFNAQEATQFNAQIATgFPAQEATwFPAQIAVAFRAQIAVQFTAQEAVgFTAQIA
-VwFVAQSAAAABAAAApSUgWwAAAAAAAJsKAAAEAAAAAAAAAAAAAAB9AL8KAAAAABEAAAAAAAAAAAAA
+VwFVAQSAAAABAAAApSXqXQAAAAAAAJsKAAAEAAAAAAAAAAAAAAB9AL8KAAAAABEAAAAAAAAAAAAA
 AIYARhsAAAAABAAAAAAAAAAAAAAAfQDnGwAAAAANAAAAAAAAAAAAAACPAFkcAAAAABEAAAAAAAAA
 AAAAAIYAagkAAAAAAAAAAAEAAAD4HAAABwAEACcALgAAAAA8TW9kdWxlPgBnZXRfTUdBAHNldF9N
 R0EAZ2V0X0FPQQBzZXRfQU9BAGdldF9QQUIAc2V0X1BBQgBnZXRfVEhCAHNldF9USEIAZ2V0X0JP
@@ -1354,7 +1334,7 @@ AGkALgBjAG8AbQAvAHYANgAvAGwAYQB0AGUAcwB0AC8AUwBFAEsAASVVAHMAZQByADoAOgBFAHgA
 YwBoAGEAbgBnAGUAUgBhAHQAZQAAJVUAcwBlAHIAOgA6AEUAcgByAG8AcgBNAGUAcwBzAGEAZwBl
 AAAZRQB4AGMAaABhAG4AZwBlAFIAYQB0AGUAAAEAcVMAVABfADMAMQAwAGYAYgA1AGEANgBmAGIA
 ZABlADQAOQBiADcAOAA1AGIANQBmADIAMAA5ADEAMgAxADIAOQA3AGIAYgAuAFAAcgBvAHAAZQBy
-AHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAAAAAAWdjCryHdaUS3ZPJ0lczrYwAEIAEBCAMg
+AHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAAAAAAqARFWvWY4Ey9MXoEj1hmeQAEIAEBCAMg
 AAEFIAEBEREEIAEBDgUgAQERWQYHAw4NEkUEIAEODgYQAQEeAA4ECgESCAQgABJtBCAAEnEFIAES
 dRwEIAEBHAMgAA4EIAASRQUAAg4ODgUgABKAgQggBQIIDg4OCAgAARKAhRGAiQUgABKAjQcgAgEO
 EoCNCLd6XFYZNOCJCImEXc2AgMyRCDCtT+aypq7tBAAAAAAEAQAAAAMGEgwCBggCBgwDBhJRAwYS
@@ -1372,14 +1352,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAA
 AAAAAAAAAAAAAAEAAAAAAEgAAABYoAAAGgQAAAAAAAAAAAAAGgQ0AAAAVgBTAF8AVgBFAFIAUwBJ
-AE8ATgBfAEkATgBGAE8AAAAAAL0E7/4AAAEAAAABACBbpSUAAAEAIFulJT8AAAAAAAAABAAAAAIA
+AE8ATgBfAEkATgBGAE8AAAAAAL0E7/4AAAEAAAABAOpdpSUAAAEA6l2lJT8AAAAAAAAABAAAAAIA
 AAAAAAAAAAAAAAAAAABEAAAAAQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBh
 AG4AcwBsAGEAdABpAG8AbgAAAAAAAACwBHoDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYA
 bwAAAFYDAAABADAAMAAwADAAMAA0AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAAAi
 AAEAAQBDAG8AbQBwAGEAbgB5AE4AYQBtAGUAAAAAAAAAAABwACQAAQBGAGkAbABlAEQAZQBzAGMA
 cgBpAHAAdABpAG8AbgAAAAAAUwBUAF8AMwAxADAAZgBiADUAYQA2AGYAYgBkAGUANAA5AGIANwA4
 ADUAYgA1AGYAMgAwADkAMQAyADEAMgA5ADcAYgBiAAAAPgAPAAEARgBpAGwAZQBWAGUAcgBzAGkA
-bwBuAAAAAAAxAC4AMAAuADkANgAzADcALgAyADMAMwAyADgAAAAAAHAAKAABAEkAbgB0AGUAcgBu
+bwBuAAAAAAAxAC4AMAAuADkANgAzADcALgAyADQAMAA0ADIAAAAAAHAAKAABAEkAbgB0AGUAcgBu
 AGEAbABOAGEAbQBlAAAAUwBUAF8AMwAxADAAZgBiADUAYQA2AGYAYgBkAGUANAA5AGIANwA4ADUA
 YgA1AGYAMgAwADkAMQAyADEAMgA5ADcAYgBiAC4AZABsAGwAAABIABIAAQBMAGUAZwBhAGwAQwBv
 AHAAeQByAGkAZwBoAHQAAABDAG8AcAB5AHIAaQBnAGgAdAAgAEAAIAAgADIAMAAyADYAAAAqAAEA
@@ -1388,8 +1368,8 @@ AGEAbABGAGkAbABlAG4AYQBtAGUAAABTAFQAXwAzADEAMABmAGIANQBhADYAZgBiAGQAZQA0ADkA
 YgA3ADgANQBiADUAZgAyADAAOQAxADIAMQAyADkANwBiAGIALgBkAGwAbAAAAGgAJAABAFAAcgBv
 AGQAdQBjAHQATgBhAG0AZQAAAAAAUwBUAF8AMwAxADAAZgBiADUAYQA2AGYAYgBkAGUANAA5AGIA
 NwA4ADUAYgA1AGYAMgAwADkAMQAyADEAMgA5ADcAYgBiAAAAQgAPAAEAUAByAG8AZAB1AGMAdABW
-AGUAcgBzAGkAbwBuAAAAMQAuADAALgA5ADYAMwA3AC4AMgAzADMAMgA4AAAAAABGAA8AAQBBAHMA
-cwBlAG0AYgBsAHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgA5ADYAMwA3AC4AMgAzADMAMgA4
+AGUAcgBzAGkAbwBuAAAAMQAuADAALgA5ADYAMwA3AC4AMgA0ADAANAAyAAAAAABGAA8AAQBBAHMA
+cwBlAG0AYgBsAHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgA5ADYAMwA3AC4AMgA0ADAANAAy
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -2888,9 +2868,17 @@ AA==</BinaryItem>
           Id="Package\CreateTable"
           TopLeft="350.833333333333,287.5" />
         <NodeLayout
+          Size="170,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="519.333333333333,4.66666666666666" />
+        <NodeLayout
           Size="214,42"
           Id="Package\ImportBooksAndCategories"
           TopLeft="312.666666666666,430.833333333334" />
+        <NodeLayout
+          Size="261,42"
+          Id="Package\Write To Error Log Table in Database"
+          TopLeft="598.615384615385,145.897435897436" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="421.666666666667,203.666666666667">
@@ -2957,10 +2945,6 @@ AA==</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="261,42"
-          Id="Package\Write To Error Log Table in Database"
-          TopLeft="598.615384615385,145.897435897436" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="433.833333333333,102.833333333333">
@@ -2997,10 +2981,6 @@ AA==</BinaryItem>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="170,42"
-          Id="Package\Execute SQL Task"
-          TopLeft="519.333333333333,4.66666666666666" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
           TopLeft="519.333333333333,25.6666666666667">
@@ -3052,6 +3032,14 @@ AA==</BinaryItem>
           Id="Package\ImportBooksAndCategories\Data Conversion Excel - BookID to INT"
           TopLeft="436,278" />
         <NodeLayout
+          Size="162,42"
+          Id="Package\ImportBooksAndCategories\Save to BookDW"
+          TopLeft="658,796" />
+        <NodeLayout
+          Size="288,42"
+          Id="Package\ImportBooksAndCategories\Convert between unicode and non-unicode"
+          TopLeft="598,693" />
+        <NodeLayout
           Size="184,42"
           Id="Package\ImportBooksAndCategories\Sort By Excel BookID"
           TopLeft="482,362" />
@@ -3060,6 +3048,10 @@ AA==</BinaryItem>
           Id="Package\ImportBooksAndCategories\Sort By CSV BookID"
           TopLeft="793,362" />
         <NodeLayout
+          Size="144,42"
+          Id="Package\ImportBooksAndCategories\Excel Source"
+          TopLeft="495,155" />
+        <NodeLayout
           Size="265,42"
           Id="Package\ImportBooksAndCategories\Data Conversion CSV - BookID to INT"
           TopLeft="753,276" />
@@ -3067,6 +3059,10 @@ AA==</BinaryItem>
           Size="221,42"
           Id="Package\ImportBooksAndCategories\Merge Books and Categories"
           TopLeft="624,509" />
+        <NodeLayout
+          Size="251,42"
+          Id="Package\ImportBooksAndCategories\Calculate Price with ExchangeRate"
+          TopLeft="614,620" />
         <EdgeLayout
           Id="Package\ImportBooksAndCategories.Paths[Sort Output1]"
           TopLeft="882.5,404">
@@ -3136,6 +3132,28 @@ AA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\ImportBooksAndCategories.Paths[Merge Join Output]"
+          TopLeft="737,551">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69"
+              Start="0,0"
+              End="0,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\ImportBooksAndCategories.Paths[Flat File Source Output]"
           TopLeft="887.5,196">
           <EdgeLayout.Curve>
@@ -3158,19 +3176,19 @@ AA==</BinaryItem>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\ImportBooksAndCategories.Paths[Data Conversion Output1]"
-          TopLeft="884,318">
+          Id="Package\ImportBooksAndCategories.Paths[Excel Source Output]"
+          TopLeft="568.75,197">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,44"
+              EndConnector="0,81"
               Start="0,0"
-              End="0,36.5">
+              End="0,73.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.5" />
+                    End="0,73.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3179,62 +3197,6 @@ AA==</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\ImportBooksAndCategories.Paths[Data Conversion Output]"
-          TopLeft="572.25,320">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,42"
-              Start="0,0"
-              End="0,34.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="251,42"
-          Id="Package\ImportBooksAndCategories\Calculate Price with ExchangeRate"
-          TopLeft="614,620" />
-        <EdgeLayout
-          Id="Package\ImportBooksAndCategories.Paths[Merge Join Output]"
-          TopLeft="737,551">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,69"
-              Start="0,0"
-              End="0,61.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,61.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="162,42"
-          Id="Package\ImportBooksAndCategories\Save to BookDW"
-          TopLeft="658,796" />
-        <NodeLayout
-          Size="288,42"
-          Id="Package\ImportBooksAndCategories\Convert between unicode and non-unicode"
-          TopLeft="598,693" />
         <EdgeLayout
           Id="Package\ImportBooksAndCategories.Paths[Derived Column Output]"
           TopLeft="740.75,662">
@@ -3279,24 +3241,42 @@ AA==</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="144,42"
-          Id="Package\ImportBooksAndCategories\Excel Source"
-          TopLeft="495,155" />
         <EdgeLayout
-          Id="Package\ImportBooksAndCategories.Paths[Excel Source Output]"
-          TopLeft="568.75,197">
+          Id="Package\ImportBooksAndCategories.Paths[Data Conversion Output1]"
+          TopLeft="884,318">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,81"
+              EndConnector="0,44"
               Start="0,0"
-              End="0,73.5">
+              End="0,36.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,73.5" />
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\ImportBooksAndCategories.Paths[Data Conversion Output]"
+          TopLeft="572.25,320">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
