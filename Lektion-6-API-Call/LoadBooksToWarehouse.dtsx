@@ -11,21 +11,21 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="LoadBooksToWarehouse"
   DTS:PackageType="5"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{BB30BF6E-3624-4ABF-81EF-6034F1390DDB}">
+  DTS:VersionBuild="43"
+  DTS:VersionGUID="{E773E27B-ABEE-4D67-B096-492AE55D0834}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
       DTS:CreationName="EXCEL"
-      DTS:DTSID="{AD51A844-1D22-4F5C-B6F0-1B162756F008}"
+      DTS:DTSID="{E2CDC9A6-BF31-4FFC-B36C-59B26A3F4E66}"
       DTS:ObjectName="Excel Connection Manager">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="0"
           DTS:ConnectRetryInterval="0"
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\kimmo\source\repos\11 Books.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\kimmo\source\repos\11 Books(1).xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -76,6 +76,53 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager 1]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{A9AAF85F-5660-453A-B988-012DA4A9C01E}"
+      DTS:ObjectName="Flat File Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\kimmo\source\repos\Categories.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CategoryId"
+              DTS:DTSID="{B0846531-A781-47D5-98BF-F5E0F474D2D5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CategoryName"
+              DTS:DTSID="{FECA5192-FBFB-4CF9-847C-125BCBB621AF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="BookId"
+              DTS:DTSID="{017B7EDF-F74C-493E-8321-ECB7F61525F9}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[localhost.BookDW]"
       DTS:CreationName="OLEDB"
       DTS:DTSID="{9C912194-E073-4BF7-A59C-06BE2D82AC65}"
@@ -85,30 +132,6 @@
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=localhost;Initial Catalog=BookDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-LoadBooksToWarehouse-{9C912194-E073-4BF7-A59C-06BE2D82AC65}localhost.BookDW;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[localhost.BookDW 1]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{13359D57-4E5F-444D-B61E-35712A5A8E2C}"
-      DTS:ObjectName="localhost.BookDW 1">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=BookDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-LoadBooksToWarehouse-{13359D57-4E5F-444D-B61E-35712A5A8E2C}localhost.BookDW 1;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[localhost.BookDW 2]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{C319CAAA-2826-4C52-8836-D7E4BEFE39C6}"
-      DTS:ObjectName="localhost.BookDW 2">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="1"
-          DTS:ConnectRetryInterval="5"
-          DTS:ConnectionString="Data Source=localhost;Initial Catalog=BookDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-LoadBooksToWarehouse-{C319CAAA-2826-4C52-8836-D7E4BEFE39C6}localhost.BookDW 2;Auto Translate=False;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -203,6 +226,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>C:\Users\kimmo\AppData\Local\Temp\Vsta\SSIS_ST170\VstaupN4iY2v4EG5W_CNG9rG2Q\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
@@ -212,6 +238,7 @@
   </ItemGroup>
   <ItemGroup>
     <AppDesigner Include="Properties\" />
+    <Compile Include="MoneyData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -223,6 +250,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -369,6 +397,12 @@
   </resheader>
 </root>]]></ProjectItem>
           <ProjectItem
+            Name="packages.config"
+            Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<packages>
+  <package id="Newtonsoft.Json" version="13.0.4" targetFramework="net47" />
+</packages>]]></ProjectItem>
+          <ProjectItem
             Name="Properties\Settings.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
 // <auto-generated>
@@ -414,6 +448,7 @@ using System;
 using System.Data;
 using System.Net;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 #endregion
 
 namespace ST_310fb5a6fbde49b785b5f209121297bb
@@ -485,16 +520,17 @@ namespace ST_310fb5a6fbde49b785b5f209121297bb
         #endregion
 
 
-		/// <summary>
+        /// <summary>
         /// This method is called when this script task executes in the control flow.
         /// Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
         /// To open Help, press F1.
         /// </summary>
-		public void Main()
-		{
-            // url = länk till API
+        public void Main()
+        {
+            // try = vi testar denna kod och om något går fel så hamnar i i catch-blocket nedan
             try
             {
+                // url = länk till API
                 string url = "https://opene.er-api.com/v6/latest/SEK";
 
                 // här hämtar vi resultatet från en GET
@@ -503,36 +539,32 @@ namespace ST_310fb5a6fbde49b785b5f209121297bb
                 string json = new WebClient().DownloadString(url);
 
                 // Vi vill hitta GBP i vårt JSON
-                string searchText = "\"GBP\":";
-                // vi får en position i textsträngen
-                // position = så här många tecken in i strängen finns ditt resultat
-                int start = json.IndexOf(searchText) + searchText.Length;
-                int end = json.IndexOf(",", start);
 
-                // extrahera allt som kommer mellan GBP: och nästa kommatecken
-                string gbpRateText = json.Substring(start, end - start);
+                MoneyData moneyData = JsonConvert.DeserializeObject<MoneyData>(json);
+
+                double GBP = moneyData.rates.GBP;
 
                 // System.Globalization.CultureInfo.InvariantCulture = fixar med , eller . i decimaltal
                 // i sverige 7,5
                 // i programmering 7.5
-                double gbpRate = Convert.ToDouble(gbpRateText, System.Globalization.CultureInfo.InvariantCulture);
 
-                Dts.Variables["User::ExchangeRate"].Value = gbpRate;
+                Dts.Variables["User::ExchangeRate"].Value = GBP;
 
                 // Här skapas en meddelanderuta för att vi ska se värdet
                 // kommentera bort den när ni kör
-                MessageBox.Show("GBP rate = " + gbpRate.ToString());
+                // MessageBox.Show("GBP rate = " + gbpRate.ToString());
 
                 // skickar ut ett resultat som är kopplat till röda eller gröna pilarna i flow
                 Dts.TaskResult = (int)ScriptResults.Success;
             }
+            // fånga felet från try ovan
             catch (Exception ex)
             {
+                // vi använder oss av Exception ex för att hämta message + innerexception. Detta för att underlätta debugging för oss.
                 Dts.Variables["User::ErrorMessage"].Value = ex.Message + ex.InnerException;
                 Dts.Events.FireError(0, "ExchangeRate", ex.Message.ToString() + ex.InnerException.ToString(), "", 0);
                 Dts.TaskResult = (int)ScriptResults.Failure;
             }
-
         }
 
         #region ScriptResults declaration
@@ -561,15 +593,17 @@ namespace ST_310fb5a6fbde49b785b5f209121297bb
     <msb:CodeName>ST_310fb5a6fbde49b785b5f209121297bb</msb:CodeName>
     <msb:Language>msBuild</msb:Language>
     <msb:DisplayName>ST_310fb5a6fbde49b785b5f209121297bb</msb:DisplayName>
-    <msb:ProjectId>{5508D351-8791-411B-8338-788E763A4DEB}</msb:ProjectId>
+    <msb:ProjectId>{5D7443C6-AF8E-4CFC-AE4D-74B4654217E6}</msb:ProjectId>
   </msb:PropertyGroup>
   <msb:ItemGroup>
     <msb:Project Include="ST_310fb5a6fbde49b785b5f209121297bb.csproj" />
     <msb:File Include="Properties\Resources.resx" />
+    <msb:File Include="MoneyData.cs" />
     <msb:File Include="Properties\Settings.settings" />
     <msb:File Include="Properties\AssemblyInfo.cs" />
     <msb:File Include="Properties\Resources.Designer.cs" />
     <msb:File Include="Properties\Settings.Designer.cs" />
+    <msb:File Include="packages.config" />
     <msb:File Include="ScriptMain.cs" />
   </msb:ItemGroup>
 </c:Project>]]></ProjectItem>
@@ -603,6 +637,194 @@ using System.Runtime.CompilerServices;
 // by using the '*' as shown below:
 
 [assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
+          <ProjectItem
+            Name="MoneyData.cs"
+            Encoding="UTF8"><![CDATA[using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace ST_310fb5a6fbde49b785b5f209121297bb
+{
+
+    public class MoneyData
+    {
+        public Rates rates { get; set; }
+    }
+
+    public class Rates
+    {
+        public int SEK { get; set; }
+        public float AED { get; set; }
+        public float AFN { get; set; }
+        public float ALL { get; set; }
+        public float AMD { get; set; }
+        public float ANG { get; set; }
+        public float AOA { get; set; }
+        public float ARS { get; set; }
+        public float AUD { get; set; }
+        public float AWG { get; set; }
+        public float AZN { get; set; }
+        public float BAM { get; set; }
+        public float BBD { get; set; }
+        public float BDT { get; set; }
+        public float BGN { get; set; }
+        public float BHD { get; set; }
+        public float BIF { get; set; }
+        public float BMD { get; set; }
+        public float BND { get; set; }
+        public float BOB { get; set; }
+        public float BRL { get; set; }
+        public float BSD { get; set; }
+        public float BTN { get; set; }
+        public float BWP { get; set; }
+        public float BYN { get; set; }
+        public float BZD { get; set; }
+        public float CAD { get; set; }
+        public float CDF { get; set; }
+        public float CHF { get; set; }
+        public float CLF { get; set; }
+        public float CLP { get; set; }
+        public float CNH { get; set; }
+        public float CNY { get; set; }
+        public float COP { get; set; }
+        public float CRC { get; set; }
+        public float CUP { get; set; }
+        public float CVE { get; set; }
+        public float CZK { get; set; }
+        public float DJF { get; set; }
+        public float DKK { get; set; }
+        public float DOP { get; set; }
+        public float DZD { get; set; }
+        public float EGP { get; set; }
+        public float ERN { get; set; }
+        public float ETB { get; set; }
+        public float EUR { get; set; }
+        public float FJD { get; set; }
+        public float FKP { get; set; }
+        public float FOK { get; set; }
+        public float GBP { get; set; }
+        public float GEL { get; set; }
+        public float GGP { get; set; }
+        public float GHS { get; set; }
+        public float GIP { get; set; }
+        public float GMD { get; set; }
+        public float GNF { get; set; }
+        public float GTQ { get; set; }
+        public float GYD { get; set; }
+        public float HKD { get; set; }
+        public float HNL { get; set; }
+        public float HRK { get; set; }
+        public float HTG { get; set; }
+        public float HUF { get; set; }
+        public float IDR { get; set; }
+        public float ILS { get; set; }
+        public float IMP { get; set; }
+        public float INR { get; set; }
+        public float IQD { get; set; }
+        public float IRR { get; set; }
+        public float ISK { get; set; }
+        public float JEP { get; set; }
+        public float JMD { get; set; }
+        public float JOD { get; set; }
+        public float JPY { get; set; }
+        public float KES { get; set; }
+        public float KGS { get; set; }
+        public float KHR { get; set; }
+        public float KID { get; set; }
+        public float KMF { get; set; }
+        public float KRW { get; set; }
+        public float KWD { get; set; }
+        public float KYD { get; set; }
+        public float KZT { get; set; }
+        public float LAK { get; set; }
+        public float LBP { get; set; }
+        public float LKR { get; set; }
+        public float LRD { get; set; }
+        public float LSL { get; set; }
+        public float LYD { get; set; }
+        public float MAD { get; set; }
+        public float MDL { get; set; }
+        public float MGA { get; set; }
+        public float MKD { get; set; }
+        public float MMK { get; set; }
+        public float MNT { get; set; }
+        public float MOP { get; set; }
+        public float MRU { get; set; }
+        public float MUR { get; set; }
+        public float MVR { get; set; }
+        public float MWK { get; set; }
+        public float MXN { get; set; }
+        public float MYR { get; set; }
+        public float MZN { get; set; }
+        public float NAD { get; set; }
+        public float NGN { get; set; }
+        public float NIO { get; set; }
+        public float NOK { get; set; }
+        public float NPR { get; set; }
+        public float NZD { get; set; }
+        public float OMR { get; set; }
+        public float PAB { get; set; }
+        public float PEN { get; set; }
+        public float PGK { get; set; }
+        public float PHP { get; set; }
+        public float PKR { get; set; }
+        public float PLN { get; set; }
+        public float PYG { get; set; }
+        public float QAR { get; set; }
+        public float RON { get; set; }
+        public float RSD { get; set; }
+        public float RUB { get; set; }
+        public float RWF { get; set; }
+        public float SAR { get; set; }
+        public float SBD { get; set; }
+        public float SCR { get; set; }
+        public float SDG { get; set; }
+        public float SGD { get; set; }
+        public float SHP { get; set; }
+        public float SLE { get; set; }
+        public float SLL { get; set; }
+        public float SOS { get; set; }
+        public float SRD { get; set; }
+        public float SSP { get; set; }
+        public float STN { get; set; }
+        public float SYP { get; set; }
+        public float SZL { get; set; }
+        public float THB { get; set; }
+        public float TJS { get; set; }
+        public float TMT { get; set; }
+        public float TND { get; set; }
+        public float TOP { get; set; }
+        public float TRY { get; set; }
+        public float TTD { get; set; }
+        public float TVD { get; set; }
+        public float TWD { get; set; }
+        public float TZS { get; set; }
+        public float UAH { get; set; }
+        public float UGX { get; set; }
+        public float USD { get; set; }
+        public float UYU { get; set; }
+        public float UZS { get; set; }
+        public float VES { get; set; }
+        public float VND { get; set; }
+        public float VUV { get; set; }
+        public float WST { get; set; }
+        public float XAF { get; set; }
+        public float XCD { get; set; }
+        public float XCG { get; set; }
+        public float XDR { get; set; }
+        public float XOF { get; set; }
+        public float XPF { get; set; }
+        public float YER { get; set; }
+        public float ZAR { get; set; }
+        public float ZMW { get; set; }
+        public float ZWG { get; set; }
+        public float ZWL { get; set; }
+    }
+
+}]]></ProjectItem>
           <ProjectItem
             Name="Properties\Settings.settings"
             Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
@@ -683,121 +905,491 @@ namespace ST_310fb5a6fbde49b785b5f209121297bb.Properties {
           <BinaryItem
             Name="ST_310fb5a6fbde49b785b5f209121297bb.dll">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
-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
-6QCOBVAA8QDzA1UA+QD8AlsAAQE9A2AA0QDjBWQACQE2BmoA6QAVBgEAeQBuAGAAeQBbBHEAkQA9
-A2AA6QDYBXYAGQGyBHwAcQC8BAYAkQC8BAYAIQGeAIUAIQFGBo4AmQC8BJQAuQC8BAYACAAUAK4A
-CAAYALMAKQBzABYBLgALAO4ALgATAPcALgAbABYBLgAjAB8BLgArAEgBLgAzAEgBLgA7AEgBLgBD
-AB8BLgBLAE4BLgBTAEgBLgBbAGUBQwBjALMASQBzABYBYQB7ALMAYwBrALMAGwADAAEABAADAAAA
-jgTfAAAAEgHkAAAAAAbpAAIABAADAAIABQAFAAEABgAFAAIABwAHAASAAAABAAAApSUpUgAAAAAA
-ADEAAAAEAAAAAAAAAAAAAACcAFUAAAAAABEAAAAAAAAAAAAAAKUAWwMAAAAABAAAAAAAAAAAAAAA
-nAD8AwAAAAARAAAAAAAAAAAAAAClAAoAAAAAAAQAAAAAAAAAAAAAAJwApQUAAAAAAAAAAAEAAAAN
-BQAABQACAAAAADxNb2R1bGU+AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuTWFuYWdlZERUUwB2YWx1ZV9f
-AFNUXzMxMGZiNWE2ZmJkZTQ5Yjc4NWI1ZjIwOTEyMTI5N2JiAG1zY29ybGliAGRlZmF1bHRJbnN0
-YW5jZQBnZXRfTWVzc2FnZQBWYXJpYWJsZQBUb0RvdWJsZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRU
-eXBlRnJvbUhhbmRsZQBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5SdW50aW1lAFR5cGUARmFpbHVy
-ZQBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQByZXNvdXJjZUN1bHR1cmUAZ2V0X0ludmFyaWFudEN1
-bHR1cmUAVlNUQVJUU2NyaXB0T2JqZWN0TW9kZWxCYXNlAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNl
-AEVkaXRvckJyb3dzYWJsZVN0YXRlAENvbXBpbGVyR2VuZXJhdGVkQXR0cmlidXRlAERlYnVnZ2Vy
-Tm9uVXNlckNvZGVBdHRyaWJ1dGUARGVidWdnYWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVB
-dHRyaWJ1dGUAQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3NlbWJseVRyYWRlbWFya0F0dHJpYnV0
-ZQBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUAQXNzZW1ibHlDb25maWd1cmF0aW9uQXR0cmlidXRl
-AEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQ29tcGlsYXRpb25SZWxheGF0aW9uc0F0dHJp
-YnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRBdHRyaWJ1dGUA
-U1NJU1NjcmlwdFRhc2tFbnRyeVBvaW50QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0
-ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0dHJpYnV0ZQBzZXRfVmFsdWUAdmFsdWUASW5kZXhPZgBT
-eXN0ZW0uUnVudGltZS5WZXJzaW9uaW5nAERvd25sb2FkU3RyaW5nAFRvU3RyaW5nAFN1YnN0cmlu
-ZwBnZXRfTGVuZ3RoAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuU2NyaXB0VGFzawBNaWNyb3NvZnQuU3Fs
-U2VydmVyLkR0cy5UYXNrcy5TY3JpcHRUYXNrAFNjcmlwdE9iamVjdE1vZGVsAFN5c3RlbS5Db21w
-b25lbnRNb2RlbABTVF8zMTBmYjVhNmZiZGU0OWI3ODViNWYyMDkxMjEyOTdiYi5kbGwAZ2V0X0l0
-ZW0AU3lzdGVtAEVudW0AcmVzb3VyY2VNYW4AU2NyaXB0TWFpbgBTeXN0ZW0uQ29uZmlndXJhdGlv
-bgBTeXN0ZW0uR2xvYmFsaXphdGlvbgBTeXN0ZW0uUmVmbGVjdGlvbgBnZXRfSW5uZXJFeGNlcHRp
-b24AQ3VsdHVyZUluZm8ASUZvcm1hdFByb3ZpZGVyAGdldF9SZXNvdXJjZU1hbmFnZXIARXZlbnRz
-T2JqZWN0V3JhcHBlcgBGaXJlRXJyb3IALmN0b3IALmNjdG9yAFN5c3RlbS5EaWFnbm9zdGljcwBT
-eXN0ZW0uUnVudGltZS5Db21waWxlclNlcnZpY2VzAFN5c3RlbS5SZXNvdXJjZXMAU1RfMzEwZmI1
-YTZmYmRlNDliNzg1YjVmMjA5MTIxMjk3YmIuUHJvcGVydGllcy5SZXNvdXJjZXMucmVzb3VyY2Vz
-AERlYnVnZ2luZ01vZGVzAFNUXzMxMGZiNWE2ZmJkZTQ5Yjc4NWI1ZjIwOTEyMTI5N2JiLlByb3Bl
-cnRpZXMAZ2V0X1ZhcmlhYmxlcwBTZXR0aW5ncwBTeXN0ZW0uV2luZG93cy5Gb3JtcwBTdWNjZXNz
-AGdldF9EdHMAU2NyaXB0UmVzdWx0cwBnZXRfRXZlbnRzAENvbmNhdABPYmplY3QAU3lzdGVtLk5l
-dABnZXRfRGVmYXVsdABEaWFsb2dSZXN1bHQAc2V0X1Rhc2tSZXN1bHQAV2ViQ2xpZW50AENvbnZl
-cnQAU2hvdwBNZXNzYWdlQm94AGdldF9Bc3NlbWJseQAAAE1oAHQAdABwAHMAOgAvAC8AbwBwAGUA
-bgBlAC4AZQByAC0AYQBwAGkALgBjAG8AbQAvAHYANgAvAGwAYQB0AGUAcwB0AC8AUwBFAEsAAQ0i
-AEcAQgBQACIAOgAAAywAACVVAHMAZQByADoAOgBFAHgAYwBoAGEAbgBnAGUAUgBhAHQAZQAAF0cA
-QgBQACAAcgBhAHQAZQAgAD0AIAAAJVUAcwBlAHIAOgA6AEUAcgByAG8AcgBNAGUAcwBzAGEAZwBl
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDACHlDmoAAAAAAAAAAOAAIiALATAAAGYAAAAIAAAAAAAAcoUA
+AAAgAAAAoAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAADgAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAACCFAABPAAAAAKAAAHgEAAAAAAAAAAAAAAAAAAAA
+AAAAAMAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAeGUAAAAgAAAAZgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAHgEAAAAoAAAAAYAAABoAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAMAAAAACAAAAbgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAABU
+hQAAAAAAAEgAAAACAAUAvCwAAKxXAAABAAAAAAAAAGiEAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CewEAAAQqIgIDfQEAAAQqHgIoEAAACioeAnsCAAAEKiIC
+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
+AgN9owAABCoeAnukAAAEKiICA32kAAAEKh4Ce6UAAAQqIgIDfaUAAAQqHgJ7pgAABCoiAgN9pgAA
+BCoeAnunAAAEKiICA32nAAAEKgAbMAYAzwAAAAEAABFyAQAAcApzEQAACgYoEgAACigBAAArbwEA
+AAZvZgAABmwLAigUAAAKbxUAAApyTwAAcG8WAAAKB4weAAABbxcAAAoCKBQAAAoWbxgAAArefgwC
+KBQAAApvFQAACnJ1AABwbxYAAAoIbxkAAAoIbxoAAAolLQQmFCsFbxsAAAooHAAACm8XAAAKAigU
+AAAKbx0AAAoWcpsAAHAIbxkAAApvGwAACghvGgAACm8bAAAKKBwAAApytQAAcBZvHgAACiYCKBQA
+AAoXbxgAAAreACoAARAAAAAAAABQUAB+EQAAAR4CKB8AAAoqrn6oAAAELR5ytwAAcNAFAAACKCAA
+AApvIQAACnMiAAAKgKgAAAR+qAAABCoafqkAAAQqHgKAqQAABCoafqoAAAQqHgIoIwAACiouc1gB
+AAaAqgAABCoAAEJTSkIBAAEAAAAAAAwAAAB2NC4wLjMwMzE5AAAAAAUAbAAAAAA2AAAjfgAAbDYA
+ADgeAAAjU3RyaW5ncwAAAACkVAAALAEAACNVUwDQVQAAEAAAACNHVUlEAAAA4FUAAMwBAAAjQmxv
+YgAAAAAAAAACAAABVx2iAQkLAAAA+gEzABYAAAEAAAAjAAAABwAAAK0AAABZAQAAqAAAACMAAAAC
+AAAABQIAAAEAAAAEAAAAqgAAAFIBAAABAAAABQAAAAEAAAABAAAAAQAAAAAAthsBAAAAAAAGAFca
+xxwGAOYaxxwGAKMZtBwPADsdAAAGANAZNBwGADoaNBwGABsaNBwGAM0aNBwGAHcaNBwGAJAaNBwG
+AOcZNBwGAAIaFBsGAOUd5xsGAGsZxxwKAKsaZRsKACIZZRsGAE8c5xsGAO4b5xsGAIYZtBwGAHkc
+5xwGAGkcHxwOAFYZoBsOALcZoBsOAD4ZChwOABIe7B0SABweWRwKAI4bZRsWAH0dzRgWAJkYzRgG
+AKIY5xsGAD8b5xsKAIkcZRsGAO0Y5xsGAKkY5xsGACweNBwAAAAAAQAAAAAAAQABAAEAEACRCpsK
+NQABAAEAAQAQAIcdmwo1AAIABAABABAA/xubCkEAqABRAQAAEADuHEodNQCoAFMBAAEQAKEdSh1h
+AKoAVwEDAQAAuh0AAEkAqwBaAQEAZhiiAAEAhhCmAAEA7gupAAEAPxKpAAEAghGpAAEAgQypAAEA
+3g+pAAEA3QqpAAEAARepAAEAvA2pAAEACBCpAAEAEROpAAEAFRKpAAEArwupAAEAQBepAAEAVBKp
+AAEAGAypAAEA9w6pAAEAlgypAAEA1QypAAEAHAupAAEAwRGpAAEAaA2pAAEAvRKpAAEAtRSpAAEA
+/BKpAAEATw6pAAEAcAupAAEAzQ6pAAEA4g6pAAEAIQ+pAAEADRSpAAEAXBCpAAEAJxipAAEANxSp
+AAEAWwupAAEAoBSpAAEAow6pAAEAQxGpAAEADA+pAAEAsBCpAAEATBSpAAEAZA6pAAEAjxOpAAEA
+qBKpAAEAMQupAAEAGhapAAEAQgypAAEA+BOpAAEA2hCpAAEAUBOpAAEAbRGpAAEApBOpAAEArRap
+AAEA4xOpAAEAqwypAAEASw+pAAEA3xSpAAEAEA6pAAEAVwypAAEArBGpAAEABBGpAAEA8w+pAAEA
+ig+pAAEASBWpAAEA1xapAAEAIhSpAAEA2xWpAAEAKQ2pAAEABRapAAEAGRGpAAEAehOpAAEAwAyp
+AAEAFA2pAAEAPBipAAEAbhapAAEAmBapAAEAhxWpAAEALQypAAEANg+pAAEA/RepAAEA5g2pAAEA
+JQ6pAAEAlBepAAEAcRCpAAEAZROpAAEAnBWpAAEAPg2pAAEA1hGpAAEAOg6pAAEAhQupAAEAWBGp
+AAEAyAqpAAEAbAypAAEAxRCpAAEAahepAAEAYRSpAAEAqRepAAEALxapAAEARBapAAEALhGpAAEA
+5xKpAAEAWRapAAEAJhOpAAEAmgupAAEAaRKpAAEAOxOpAAEA7xCpAAEA8BWpAAEAeQ6pAAEAxhWp
+AAEA8gqpAAEAKhKpAAEAmxCpAAEAuROpAAEAsRWpAAEAfhKpAAEAMhCpAAEA9BSpAAEAkxKpAAEA
+fQ2pAAEARgupAAEAnw+pAAEACRWpAAEAxAupAAEAMxWpAAEAyQ+pAAEAAwypAAEAzhOpAAEAjg6p
+AAEAlxGpAAEA7BapAAEAUw2pAAEAixSpAAEA0hKpAAEAyhSpAAEAABKpAAEABwupAAEAwhapAAEA
+VRepAAEA6gypAAEAdhSpAAEAURipAAEApw2pAAEA0Q2pAAEA+w2pAAEAFhepAAEARxCpAAEAEhip
+AAEAkg2pAAEAvhepAAEAKxepAAEAgxapAAEA/wypAAEA0xepAAEAfxepAAEAuA6pAAEA2QupAAEA
+tA+pAAEAXRWpAAEAYA+pAAEAdQ+pAAEAchWpAAEAHhWpAAEA6BepAAEAHRCpAAEA6xGpABEA8xus
+ABEAEhmwABEAfRi0AAYGiQqmAFaAqh24AFaA8hi4AFAgAAAAAIYIjR28AAEAWCAAAAAAhgiXHcEA
+AQBhIAAAAACGGKccBgACAGkgAAAAAIYIagTHAAIAcSAAAAAAhghyBAEAAgB6IAAAAACGCOoAywAD
+AIIgAAAAAIYI8gDPAAMAiyAAAAAAhgi6BcsABACTIAAAAACGCMIFzwAEAJwgAAAAAIYIKgXLAAUA
+pCAAAAAAhggyBc8ABQCtIAAAAACGCFoBywAGALUgAAAAAIYIYgHPAAYAviAAAAAAhgjqA8sABwDG
+IAAAAACGCPIDzwAHAM8gAAAAAIYIGgDLAAgA1yAAAAAAhggiAM8ACADgIAAAAACGCFoJywAJAOgg
+AAAAAIYIYgnPAAkA8SAAAAAAhghKAssACgD5IAAAAACGCFICzwAKAAIhAAAAAIYICgTLAAsACiEA
+AAAAhggSBM8ACwATIQAAAACGCFoGywAMABshAAAAAIYIYgbPAAwAJCEAAAAAhgiaBcsADQAsIQAA
+AACGCKIFzwANADUhAAAAAIYIugDLAA4APSEAAAAAhgjCAM8ADgBGIQAAAACGCKkJywAPAE4hAAAA
+AIYIsQnPAA8AVyEAAAAAhgjKBcsAEABfIQAAAACGCNIFzwAQAGghAAAAAIYICgHLABEAcCEAAAAA
+hggSAc8AEQB5IQAAAACGCDoDywASAIEhAAAAAIYIQgPPABIAiiEAAAAAhghqAcsAEwCSIQAAAACG
+CHIBzwATAJshAAAAAIYImgHLABQAoyEAAAAAhgiiAc8AFACsIQAAAACGCEoAywAVALQhAAAAAIYI
+UgDPABUAvSEAAAAAhghaBcsAFgDFIQAAAACGCGIFzwAWAM4hAAAAAIYICgLLABcA1iEAAAAAhggS
+As8AFwDfIQAAAACGCBoGywAYAOchAAAAAIYIIgbPABgA8CEAAAAAhgiaB8sAGQD4IQAAAACGCKIH
+zwAZAAEiAAAAAIYISgbLABoACSIAAAAAhghSBs8AGgASIgAAAACGCLoCywAbABoiAAAAAIYIwgLP
+ABsAIyIAAAAAhgiKAMsAHAArIgAAAACGCJIAzwAcADQiAAAAAIYIGgPLAB0APCIAAAAAhggiA88A
+HQBFIgAAAACGCCoDywAeAE0iAAAAAIYIMgPPAB4AViIAAAAAhghaA8sAHwBeIgAAAACGCGIDzwAf
+AGciAAAAAIYIGgfLACAAbyIAAAAAhggiB88AIAB4IgAAAACGCEoEywAhAIAiAAAAAIYIUgTPACEA
+iSIAAAAAhghZCssAIgCRIgAAAACGCGEKzwAiAJoiAAAAAIYIOgfLACMAoiIAAAAAhghCB88AIwCr
+IgAAAACGCHoAywAkALMiAAAAAIYIggDPACQAvCIAAAAAhgiKB8sAJQDEIgAAAACGCJIHzwAlAM0i
+AAAAAIYI+gLLACYA1SIAAAAAhggCA88AJgDeIgAAAACGCPoEywAnAOYiAAAAAIYIAgXPACcA7yIA
+AAAAhghKA8sAKAD3IgAAAACGCFIDzwAoAAAjAAAAAIYIigTLACkACCMAAAAAhgiSBM8AKQARIwAA
+AACGCEoHywAqABkjAAAAAIYIUgfPACoAIiMAAAAAhgjKAssAKwAqIwAAAACGCNICzwArADMjAAAA
+AIYIugbLACwAOyMAAAAAhgjCBs8ALABEIwAAAACGCAoGywAtAEwjAAAAAIYIEgbPAC0AVSMAAAAA
+hghaAMsALgBdIwAAAACGCGIAzwAuAGYjAAAAAIYIqgjLAC8AbiMAAAAAhgiyCM8ALwB3IwAAAACG
+CCoBywAwAH8jAAAAAIYIMgHPADAAiCMAAAAAhggKB8sAMQCQIwAAAACGCBIHzwAxAJkjAAAAAIYI
+qgTLADIAoSMAAAAAhgiyBM8AMgCqIwAAAACGCIoGywAzALIjAAAAAIYIkgbPADMAuyMAAAAAhgga
+BcsANADDIwAAAACGCCIFzwA0AMwjAAAAAIYIygbLADUA1CMAAAAAhgjSBs8ANQDdIwAAAACGCBoJ
+ywA2AOUjAAAAAIYIIgnPADYA7iMAAAAAhgj6BssANwD2IwAAAACGCAIHzwA3AP8jAAAAAIYIegHL
+ADgAByQAAAAAhgiCAc8AOAAQJAAAAACGCHoDywA5ABgkAAAAAIYIggPPADkAISQAAAAAhgi6B8sA
+OgApJAAAAACGCMIHzwA6ADIkAAAAAIYIigLLADsAOiQAAAAAhgiSAs8AOwBDJAAAAACGCDoBywA8
+AEskAAAAAIYIQgHPADwAVCQAAAAAhghKBcsAPQBcJAAAAACGCFIFzwA9AGUkAAAAAIYIygTLAD4A
+bSQAAAAAhgjSBM8APgB2JAAAAACGCPoDywA/AH4kAAAAAIYIAgTPAD8AhyQAAAAAhgiqA8sAQACP
+JAAAAACGCLIDzwBAAJgkAAAAAIYICgjLAEEAoCQAAAAAhggSCM8AQQCpJAAAAACGCDoJywBCALEk
+AAAAAIYIQgnPAEIAuiQAAAAAhggqB8sAQwDCJAAAAACGCDIHzwBDAMskAAAAAIYIegjLAEQA0yQA
+AAAAhgiCCM8ARADcJAAAAACGCNoBywBFAOQkAAAAAIYI4gHPAEUA7SQAAAAAhgiaCMsARgD1JAAA
+AACGCKIIzwBGAP4kAAAAAIYI2gTLAEcABiUAAAAAhgjiBM8ARwAPJQAAAACGCKoGywBIABclAAAA
+AIYIsgbPAEgAICUAAAAAhgiKAcsASQAoJQAAAACGCJIBzwBJADElAAAAAIYIygHLAEoAOSUAAAAA
+hgjSAc8ASgBCJQAAAACGCGkKywBLAEolAAAAAIYIcQrPAEsAUyUAAAAAhgjqCMsATABbJQAAAACG
+CPIIzwBMAGQlAAAAAIYICgnLAE0AbCUAAAAAhggSCc8ATQB1JQAAAACGCDoIywBOAH0lAAAAAIYI
+QgjPAE4AhiUAAAAAhggaAcsATwCOJQAAAACGCCIBzwBPAJclAAAAAIYIagPLAFAAnyUAAAAAhghy
+A88AUACoJQAAAACGCDkKywBRALAlAAAAAIYIQQrPAFEAuSUAAAAAhghqAssAUgDBJQAAAACGCHIC
+zwBSAMolAAAAAIYImgLLAFMA0iUAAAAAhgiiAs8AUwDbJQAAAACGCOkJywBUAOMlAAAAAIYI8QnP
+AFQA7CUAAAAAhghaBMsAVQD0JQAAAACGCGIEzwBVAP0lAAAAAIYImgbLAFYABSYAAAAAhgiiBs8A
+VgAOJgAAAACGCEoIywBXABYmAAAAAIYIUgjPAFcAHyYAAAAAhgjqAcsAWAAnJgAAAACGCPIBzwBY
+ADAmAAAAAIYIagXLAFkAOCYAAAAAhghyBc8AWQBBJgAAAACGCKoCywBaAEkmAAAAAIYIsgLPAFoA
+UiYAAAAAhgiaAMsAWwBaJgAAAACGCKIAzwBbAGMmAAAAAIYICgXLAFwAayYAAAAAhggSBc8AXAB0
+JgAAAACGCAoAywBdAHwmAAAAAIYIEgDPAF0AhSYAAAAAhghKAcsAXgCNJgAAAACGCFIBzwBeAJYm
+AAAAAIYImgTLAF8AniYAAAAAhgiiBM8AXwCnJgAAAACGCMkJywBgAK8mAAAAAIYI0QnPAGAAuCYA
+AAAAhghaB8sAYQDAJgAAAACGCGIHzwBhAMkmAAAAAIYI+QnLAGIA0SYAAAAAhggBCs8AYgDaJgAA
+AACGCLoIywBjAOImAAAAAIYIwgjPAGMA6yYAAAAAhgjKCMsAZADzJgAAAACGCNIIzwBkAPwmAAAA
+AIYI6gTLAGUABCcAAAAAhgjyBM8AZQANJwAAAACGCDoGywBmABUnAAAAAIYIQgbPAGYAHicAAAAA
+hgjaCMsAZwAmJwAAAACGCOIIzwBnAC8nAAAAAIYIagbLAGgANycAAAAAhghyBs8AaABAJwAAAACG
+CKoAywBpAEgnAAAAAIYIsgDPAGkAUScAAAAAhgjaBcsAagBZJwAAAACGCOIFzwBqAGInAAAAAIYI
+egbLAGsAaicAAAAAhgiCBs8AawBzJwAAAACGCLoEywBsAHsnAAAAAIYIwgTPAGwAhCcAAAAAhgiK
+CMsAbQCMJwAAAACGCJIIzwBtAJUnAAAAAIYI2gLLAG4AnScAAAAAhgjiAs8AbgCmJwAAAACGCGoI
+ywBvAK4nAAAAAIYIcgjPAG8AtycAAAAAhggqAMsAcAC/JwAAAACGCDIAzwBwAMgnAAAAAIYIqgXL
+AHEA0CcAAAAAhgiyBc8AcQDZJwAAAACGCHoEywByAOEnAAAAAIYIggTPAHIA6icAAAAAhgjaBssA
+cwDyJwAAAACGCOIGzwBzAPsnAAAAAIYIWgjLAHQAAygAAAAAhghiCM8AdAAMKAAAAACGCOoFywB1
+ABQoAAAAAIYI8gXPAHUAHSgAAAAAhggqBMsAdgAlKAAAAACGCDIEzwB2AC4oAAAAAIYIygfLAHcA
+NigAAAAAhgjSB88AdwA/KAAAAACGCPoFywB4AEcoAAAAAIYIAgbPAHgAUCgAAAAAhggaAssAeQBY
+KAAAAACGCCICzwB5AGEoAAAAAIYIagDLAHoAaSgAAAAAhghyAM8AegByKAAAAACGCLoDywB7AHoo
+AAAAAIYIwgPPAHsAgygAAAAAhgjaB8sAfACLKAAAAACGCOIHzwB8AJQoAAAAAIYIygDLAH0AnCgA
+AAAAhgjSAM8AfQClKAAAAACGCPoHywB+AK0oAAAAAIYIAgjPAH4AtigAAAAAhgjaA8sAfwC+KAAA
+AACGCOIDzwB/AMcoAAAAAIYI+gDLAIAAzygAAAAAhggCAc8AgADYKAAAAACGCOoGywCBAOAoAAAA
+AIYI8gbPAIEA6SgAAAAAhgjqAssAggDxKAAAAACGCPICzwCCAPooAAAAAIYIOgXLAIMAAikAAAAA
+hghCBc8AgwALKQAAAACGCEoJywCEABMpAAAAAIYIUgnPAIQAHCkAAAAAhgj6AcsAhQAkKQAAAACG
+CAICzwCFAC0pAAAAAIYIegfLAIYANSkAAAAAhgiCB88AhgA+KQAAAACGCCoGywCHAEYpAAAAAIYI
+MgbPAIcATykAAAAAhgiqB8sAiABXKQAAAACGCLIHzwCIAGApAAAAAIYIigXLAIkAaCkAAAAAhgiS
+Bc8AiQBxKQAAAACGCDoAywCKAHkpAAAAAIYIQgDPAIoAgikAAAAAhggqCcsAiwCKKQAAAACGCDIJ
+zwCLAJMpAAAAAIYIuQnLAIwAmykAAAAAhgjBCc8AjACkKQAAAACGCKoBywCNAKwpAAAAAIYIsgHP
+AI0AtSkAAAAAhghqB8sAjgC9KQAAAACGCHIHzwCOAMYpAAAAAIYIeQrLAI8AzikAAAAAhgiBCs8A
+jwDXKQAAAACGCDoCywCQAN8pAAAAAIYIQgLPAJAA6CkAAAAAhghaAssAkQDwKQAAAACGCGICzwCR
+APkpAAAAAIYIegLLAJIAASoAAAAAhgiCAs8AkgAKKgAAAACGCIkJywCTABIqAAAAAIYIkQnPAJMA
+GyoAAAAAhgg6BMsAlAAjKgAAAACGCEIEzwCUACwqAAAAAIYISQrLAJUANCoAAAAAhghRCs8AlQA9
+KgAAAACGCCoCywCWAEUqAAAAAIYIMgLPAJYATioAAAAAhggJCssAlwBWKgAAAACGCBEKzwCXAF8q
+AAAAAIYImQnLAJgAZyoAAAAAhgihCc8AmABwKgAAAACGCPoIywCZAHgqAAAAAIYIAgnPAJkAgSoA
+AAAAhgi6AcsAmgCJKgAAAACGCMIBzwCaAJIqAAAAAIYIGQrLAJsAmioAAAAAhgghCs8AmwCjKgAA
+AACGCNkJywCcAKsqAAAAAIYI4QnPAJwAtCoAAAAAhggKA8sAnQC8KgAAAACGCBIDzwCdAMUqAAAA
+AIYI2gDLAJ4AzSoAAAAAhgjiAM8AngDWKgAAAACGCMoDywCfAN4qAAAAAIYI0gPPAJ8A5yoAAAAA
+hggaCMsAoADvKgAAAACGCCIIzwCgAPgqAAAAAIYIigPLAKEAACsAAAAAhgiSA88AoQAJKwAAAACG
+CJoDywCiABErAAAAAIYIogPPAKIAGisAAAAAhggqCMsAowAiKwAAAACGCDIIzwCjACsrAAAAAIYI
+6gfLAKQAMysAAAAAhgjyB88ApAA8KwAAAACGCCkKywClAEQrAAAAAIYIMQrPAKUATSsAAAAAhgga
+BMsApgBVKwAAAACGCCIEzwCmAF4rAAAAAIYIegXLAKcAZisAAAAAhgiCBc8ApwBhIAAAAACGGKcc
+BgCoAHArAAAAAIYABRwGAKgAXCwAAAAAhhinHAYAqABhIAAAAACDGKccBgCoAGQsAAAAAJMIdRzU
+AKgAkCwAAAAAkwj6GNkAqACXLAAAAACTCAYZ3gCoAJ8sAAAAAJYI9x3kAKkApiwAAAAAhhinHAYA
+qQCuLAAAAACRGK0c6QCpAAAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAO
+GwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAA
+AQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAO
+GwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAA
+AQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAO
+GwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAA
+AQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAO
+GwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAA
+AQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAO
+GwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAA
+AQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAO
+GwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAA
+AQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAO
+GwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAA
+AQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAO
+GwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAA
+AQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAO
+GwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwAAAQAOGwkA
+pxwBABEApxwGABkApxwKACkApxwQADEApxwQADkApxwQAEEApxwQAEkApxwQAFEApxwQAFkApxwQ
+AGEApxwQAHEApxwGAHkApxwGAJkApxwGALkApxwVAGkApxwGAMkApxwGAMkALhsiANEA2h0nAIEA
+sh0zANkAeR04AOEA3hs9AOkABBtDANkAAx4BAIkAjRhIAIkARhxMAGkAPRtIAPkA0x1RANkAyB1X
+AAEBnRxdAIEApxwGAAkBuxhmAAkBKB5vAKEApxx1AMEApxwGAAgAsAKYAAgAtAKdACAAYwCdACEA
+YwCdAC4ACwAJAS4AEwASAS4AGwAxAS4AIwA6AS4AKwBjAS4AMwBjAS4AOwBjAS4AQwA6AS4ASwBp
+AS4AUwBjAS4AWwCAAUAAYwCdAEEAYwCdAGEAYwCdAIAAYwCdAIEAYwCdAIMAawCdAKAAYwCdAKEA
+YwCdAKMAcwCdAMAAYwCdAMEAYwCdAOAAYwCdAOEAYwCdAAABYwCdAAEBYwCdACABYwCdACEBYwCd
+AEABYwCdAEEBYwCdAGABYwCdAGEBYwCdAIABYwCdAIEBYwCdAKABYwCdAKEBYwCdAMABYwCdAMEB
+YwCdAOABYwCdAOEBYwCdAAACYwCdAAECYwCdACACYwCdACECYwCdAEACYwCdAEECYwCdAGACYwCd
+AGECYwCdAIACYwCdAIECYwCdAKACYwCdAKECYwCdAMACYwCdAMECYwCdAOACYwCdAOECYwCdAAAD
+YwCdAAEDYwCdACADYwCdACEDYwCdAEADYwCdAEEDYwCdAGADYwCdAGEDYwCdAIADYwCdAIEDYwCd
+AKADYwCdAKEDYwCdAMADYwCdAMEDYwCdAOADYwCdAOEDYwCdAAAEYwCdAAEEYwCdACAEYwCdACEE
+YwCdAEAEYwCdAEEEYwCdAGAEYwCdAGEEYwCdAIAEYwCdAIEEYwCdAKAEYwCdAKEEYwCdAMAEYwCd
+AMEEYwCdAOAEYwCdAOEEYwCdAAAFYwCdAAEFYwCdACAFYwCdACEFYwCdAEAFYwCdAEEFYwCdAGAF
+YwCdAGEFYwCdAIAFYwCdAIEFYwCdAKAFYwCdAKEFYwCdAMAFYwCdAMEFYwCdAOAFYwCdAOEFYwCd
+AAAGYwCdAAEGYwCdACAGYwCdACEGYwCdAEAGYwCdAEEGYwCdAGAGYwCdAGEGYwCdAIAGYwCdAIEG
+YwCdAKAGYwCdAKEGYwCdAMAGYwCdAMEGYwCdAOAGYwCdAOEGYwCdAAAHYwCdAAEHYwCdACAHYwCd
+ACEHYwCdAEAHYwCdAEEHYwCdAGAHYwCdAGEHYwCdAIAHYwCdAIEHYwCdAKAHYwCdAKEHYwCdAMAH
+YwCdAMEHYwCdAOAHYwCdAOEHYwCdAAAIYwCdAAEIYwCdACAIYwCdACEIYwCdAEAIYwCdAEEIYwCd
+AGAIYwCdAGEIYwCdAIAIYwCdAIEIYwCdAKAIYwCdAKEIYwCdAMAIYwCdAMEIYwCdAOAIYwCdAOEI
+YwCdAAAJYwCdAAEJYwCdACAJYwCdACEJYwCdAEAJYwCdAEEJYwCdAGAJYwCdAGEJYwCdAIAJYwCd
+AIEJYwCdAKAJYwCdAKEJYwCdAMAJYwCdAMEJYwCdAOAJYwCdAOEJYwCdAAAKYwCdAAEKYwCdACAK
+YwCdACEKYwCdAEAKYwCdAEEKYwCdAGAKYwCdAGEKYwCdAIAKYwCdAIEKYwCdAKAKYwCdAKEKYwCd
+AMAKYwCdAMEKYwCdAOAKYwCdAOEKYwCdAAALYwCdAAELYwCdACALYwCdACELYwCdAEALYwCdAEEL
+YwCdAGALYwCdAGELYwCdAIALYwCdAIELYwCdAKALYwCdAKELYwCdAMALYwCdAMELYwCdAOALYwCd
+AOELYwCdAAAMYwCdAAEMYwCdACAMYwCdACEMYwCdAEAMYwCdAEEMYwCdAGAMYwCdAGEMYwCdAIAM
+YwCdAIEMYwCdAKAMYwCdAKEMYwCdAMAMYwCdAMEMYwCdAOAMYwCdAOEMYwCdAAANYwCdAAENYwCd
+ACANYwCdACENYwCdAEANYwCdAEENYwCdAGANYwCdAGENYwCdAIANYwCdAIENYwCdAKANYwCdAKEN
+YwCdAMANYwCdAMENYwCdAOANYwCdAOENYwCdAAAOYwCdAAEOYwCdACAOYwCdACEOYwCdAEAOYwCd
+AEEOYwCdAGAOYwCdAGEOYwCdAIAOYwCdAIEOYwCdAKAOYwCdAKEOYwCdAMAOYwCdAMEOYwCdAOAO
+YwCdAOEOYwCdAAAPYwCdAAEPYwCdACAPYwCdACEPYwCdAEAPYwCdAEEPYwCdAGAPYwCdAGEPYwCd
+AIAPYwCdAIEPYwCdAKAPYwCdAKEPYwCdAMAPYwCdAMEPYwCdAOAPYwCdAOEPYwCdAAAQYwCdAAEQ
+YwCdACAQYwCdACEQYwCdAEAQYwCdAEEQYwCdAGAQYwCdAGEQYwCdAIAQYwCdAIEQYwCdAKAQYwCd
+AKEQYwCdAMAQYwCdAMEQYwCdAOAQYwCdAOEQYwCdAAARYwCdAAERYwCdACARYwCdACERYwCdAEAR
+YwCdAEERYwCdAGARYwCdAGERYwCdAIARYwCdAIERYwCdAKARYwCdAKERYwCdAMARYwCdAMERYwCd
+AOARYwCdAOERYwCdAAASYwCdAAESYwCdACASYwCdACESYwCdAEASYwCdAEESYwCdAGASYwCdAGES
+YwCdAIASYwCdAIESYwCdAKASYwCdAKESYwCdAMASYwCdAMESYwCdAOASYwCdAOESYwCdAAATYwCd
+AAETYwCdACATYwCdACETYwCdAEATYwCdAEETYwCdAGATYwCdAGETYwCdAIATYwCdAIETYwCdAKAT
+YwCdAKETYwCdAMATYwCdAMETYwCdAOATYwCdAOETYwCdAAAUYwCdAAEUYwCdACAUYwCdACEUYwCd
+AEAUYwCdAEEUYwCdAGAUYwCdAGEUYwCdAIAUYwCdAIEUYwCdAKAUYwCdAKEUYwCdAMAUYwCdAMEU
+YwCdAOAUYwCdAOEUYwCdAAAVYwCdAAkVewAxASAVYwCdACkVewAxAUAVYwCdAEEVYwCdAGAVYwCd
+AIAVYwCdAKAVYwCdAMAVYwCdAOAVYwCdAAAWYwCdACAWYwCdAEAWYwCdAGAWYwCdAIAWYwCdAKAW
+YwCdAMAWYwCdAOAWYwCdAAAXYwCdACAXYwCdAEAXYwCdAGAXYwCdAIAXYwCdAKAXYwCdAMAXYwCd
+AOAXYwCdAAAYYwCdACAYYwCdAEAYYwCdAGAYYwCdAIAYYwCdAKAYYwCdAMAYYwCdAOAYYwCdAAAZ
+YwCdACAZYwCdAEAZYwCdAGAZYwCdAIAZYwCdAKAZYwCdAMAZYwCdAOAZYwCdAAAaYwCdACAaYwCd
+AEAaYwCdAGAaYwCdAIAaYwCdAKAaYwCdAMAaYwCdAOAaYwCdAAAbYwCdACAbYwCdAEAbYwCdAGAb
+YwCdAIAbYwCdAKAbYwCdAMAbYwCdAOAbYwCdAAAcYwCdACAcYwCdAEAcYwCdAGAcYwCdAIAcYwCd
+AKAcYwCdAMAcYwCdAOAcYwCdAAAdYwCdACAdYwCdAEAdYwCdAGAdYwCdAIAdYwCdAKAdYwCdAMAd
+YwCdAOAdYwCdAAAeYwCdACAeYwCdAEAeYwCdAGAeYwCdAIAeYwCdAKAeYwCdAMAeYwCdAOAeYwCd
+AAAfYwCdACAfYwCdAEAfYwCdAGAfYwCdAIAfYwCdAKAfYwCdAMAfYwCdAOAfYwCdAAAgYwCdACAg
+YwCdAEAgYwCdAGAgYwCdAIAgYwCdAKAgYwCdAMAgYwCdAOAgYwCdAAAhYwCdACAhYwCdAEAhYwCd
+AGAhYwCdAIAhYwCdAKAhYwCdAMAhYwCdAOAhYwCdAAAiYwCdACAiYwCdAEAiYwCdAGAiYwCdAIAi
+YwCdAKAiYwCdAMAiYwCdAOAiYwCdAAAjYwCdACAjYwCdAEAjYwCdAGAjYwCdAIAjYwCdAKAjYwCd
+AMAjYwCdAOAjYwCdAAAkYwCdACAkYwCdAEAkYwCdAGAkYwCdAIAkYwCdAKAkYwCdAMAkYwCdAOAk
+YwCdAAAlYwCdACAlYwCdAEAlYwCdAGAlYwCdAIAlYwCdAKAlYwCdAMAlYwCdAOAlYwCdAAAmYwCd
+ACAmYwCdAEAmYwCdAGAmYwCdAIAmYwCdAKAmYwCdAMAmYwCdAOAmYwCdAAAnYwCdACAnYwCdAEAn
+YwCdAGAnYwCdAIAnYwCdAKAnYwCdAMAnYwCdAOAnYwCdAAAoYwCdACAoYwCdAEAoYwCdAGAoYwCd
+AIAoYwCdAKAoYwCdAMAoYwCdAOAoYwCdAAApYwCdACApYwCdAEApYwCdAGApYwCdAIApYwCdAKAp
+YwCdAMApYwCdAOApYwCdABsAAgABAAMAAgAFAKgABgCqAAAAmx3tAAAAdgTyAAAA9gD2AAAAxgX2
+AAAANgX2AAAAZgH2AAAA9gP2AAAAJgD2AAAAZgn2AAAAVgL2AAAAFgT2AAAAZgb2AAAApgX2AAAA
+xgD2AAAAtQn2AAAA1gX2AAAAFgH2AAAARgP2AAAAdgH2AAAApgH2AAAAVgD2AAAAZgX2AAAAFgL2
+AAAAJgb2AAAApgf2AAAAVgb2AAAAxgL2AAAAlgD2AAAAJgP2AAAANgP2AAAAZgP2AAAAJgf2AAAA
+VgT2AAAAZQr2AAAARgf2AAAAhgD2AAAAlgf2AAAABgP2AAAABgX2AAAAVgP2AAAAlgT2AAAAVgf2
+AAAA1gL2AAAAxgb2AAAAFgb2AAAAZgD2AAAAtgj2AAAANgH2AAAAFgf2AAAAtgT2AAAAlgb2AAAA
+JgX2AAAA1gb2AAAAJgn2AAAABgf2AAAAhgH2AAAAhgP2AAAAxgf2AAAAlgL2AAAARgH2AAAAVgX2
+AAAA1gT2AAAABgT2AAAAtgP2AAAAFgj2AAAARgn2AAAANgf2AAAAhgj2AAAA5gH2AAAApgj2AAAA
+5gT2AAAAtgb2AAAAlgH2AAAA1gH2AAAAdQr2AAAA9gj2AAAAFgn2AAAARgj2AAAAJgH2AAAAdgP2
+AAAARQr2AAAAdgL2AAAApgL2AAAA9Qn2AAAAZgT2AAAApgb2AAAAVgj2AAAA9gH2AAAAdgX2AAAA
+tgL2AAAApgD2AAAAFgX2AAAAFgD2AAAAVgH2AAAApgT2AAAA1Qn2AAAAZgf2AAAABQr2AAAAxgj2
+AAAA1gj2AAAA9gT2AAAARgb2AAAA5gj2AAAAdgb2AAAAtgD2AAAA5gX2AAAAhgb2AAAAxgT2AAAA
+lgj2AAAA5gL2AAAAdgj2AAAANgD2AAAAtgX2AAAAhgT2AAAA5gb2AAAAZgj2AAAA9gX2AAAANgT2
+AAAA1gf2AAAABgb2AAAAJgL2AAAAdgD2AAAAxgP2AAAA5gf2AAAA1gD2AAAABgj2AAAA5gP2AAAA
+BgH2AAAA9gb2AAAA9gL2AAAARgX2AAAAVgn2AAAABgL2AAAAhgf2AAAANgb2AAAAtgf2AAAAlgX2
+AAAARgD2AAAANgn2AAAAxQn2AAAAtgH2AAAAdgf2AAAAhQr2AAAARgL2AAAAZgL2AAAAhgL2AAAA
+lQn2AAAARgT2AAAAVQr2AAAANgL2AAAAFQr2AAAApQn2AAAABgn2AAAAxgH2AAAAJQr2AAAA5Qn2
+AAAAFgP2AAAA5gD2AAAA1gP2AAAAJgj2AAAAlgP2AAAApgP2AAAANgj2AAAA9gf2AAAANQr2AAAA
+JgT2AAAAhgX2AAAAeRz6AAAAGhn/AAAA+x0EAQIAAQADAAEAAgADAAIABAAFAAEABQAFAAIABgAH
+AAEABwAHAAIACAAJAAEACQAJAAIACgALAAEACwALAAIADAANAAEADQANAAIADgAPAAEADwAPAAIA
+EAARAAEAEQARAAIAEgATAAEAEwATAAIAFAAVAAEAFQAVAAIAFgAXAAEAFwAXAAIAGAAZAAEAGQAZ
+AAIAGgAbAAEAGwAbAAIAHAAdAAEAHQAdAAIAHgAfAAEAHwAfAAIAIAAhAAEAIQAhAAIAIgAjAAEA
+IwAjAAIAJAAlAAEAJQAlAAIAJgAnAAEAJwAnAAIAKAApAAEAKQApAAIAKgArAAEAKwArAAIALAAt
+AAEALQAtAAIALgAvAAEALwAvAAIAMAAxAAEAMQAxAAIAMgAzAAEAMwAzAAIANAA1AAEANQA1AAIA
+NgA3AAEANwA3AAIAOAA5AAEAOQA5AAIAOgA7AAEAOwA7AAIAPAA9AAEAPQA9AAIAPgA/AAEAPwA/
+AAIAQABBAAEAQQBBAAIAQgBDAAEAQwBDAAIARABFAAEARQBFAAIARgBHAAEARwBHAAIASABJAAEA
+SQBJAAIASgBLAAEASwBLAAIATABNAAEATQBNAAIATgBPAAEATwBPAAIAUABRAAEAUQBRAAIAUgBT
+AAEAUwBTAAIAVABVAAEAVQBVAAIAVgBXAAEAVwBXAAIAWABZAAEAWQBZAAIAWgBbAAEAWwBbAAIA
+XABdAAEAXQBdAAIAXgBfAAEAXwBfAAIAYABhAAEAYQBhAAIAYgBjAAEAYwBjAAIAZABlAAEAZQBl
+AAIAZgBnAAEAZwBnAAIAaABpAAEAaQBpAAIAagBrAAEAawBrAAIAbABtAAEAbQBtAAIAbgBvAAEA
+bwBvAAIAcABxAAEAcQBxAAIAcgBzAAEAcwBzAAIAdAB1AAEAdQB1AAIAdgB3AAEAdwB3AAIAeAB5
+AAEAeQB5AAIAegB7AAEAewB7AAIAfAB9AAEAfQB9AAIAfgB/AAEAfwB/AAIAgACBAAEAgQCBAAIA
+ggCDAAEAgwCDAAIAhACFAAEAhQCFAAIAhgCHAAEAhwCHAAIAiACJAAEAiQCJAAIAigCLAAEAiwCL
+AAIAjACNAAEAjQCNAAIAjgCPAAEAjwCPAAIAkACRAAEAkQCRAAIAkgCTAAEAkwCTAAIAlACVAAEA
+lQCVAAIAlgCXAAEAlwCXAAIAmACZAAEAmQCZAAIAmgCbAAEAmwCbAAIAnACdAAEAnQCdAAIAngCf
+AAEAnwCfAAIAoAChAAEAoQChAAIAogCjAAEAowCjAAIApAClAAEApQClAAIApgCnAAEApwCnAAIA
+qACpAAEAqQCpAAIAqgCrAAEAqwCrAAIArACtAAEArQCtAAIArgCvAAEArwCvAAIAsACxAAEAsQCx
+AAIAsgCzAAEAswCzAAIAtAC1AAEAtQC1AAIAtgC3AAEAtwC3AAIAuAC5AAEAuQC5AAIAugC7AAEA
+uwC7AAIAvAC9AAEAvQC9AAIAvgC/AAEAvwC/AAIAwADBAAEAwQDBAAIAwgDDAAEAwwDDAAIAxADF
+AAEAxQDFAAIAxgDHAAEAxwDHAAIAyADJAAEAyQDJAAIAygDLAAEAywDLAAIAzADNAAEAzQDNAAIA
+zgDPAAEAzwDPAAIA0ADRAAEA0QDRAAIA0gDTAAEA0wDTAAIA1ADVAAEA1QDVAAIA1gDXAAEA1wDX
+AAIA2ADZAAEA2QDZAAIA2gDbAAEA2wDbAAIA3ADdAAEA3QDdAAIA3gDfAAEA3wDfAAIA4ADhAAEA
+4QDhAAIA4gDjAAEA4wDjAAIA5ADlAAEA5QDlAAIA5gDnAAEA5wDnAAIA6ADpAAEA6QDpAAIA6gDr
+AAEA6wDrAAIA7ADtAAEA7QDtAAIA7gDvAAEA7wDvAAIA8ADxAAEA8QDxAAIA8gDzAAEA8wDzAAIA
+9AD1AAEA9QD1AAIA9gD3AAEA9wD3AAIA+AD5AAEA+QD5AAIA+gD7AAEA+wD7AAIA/AD9AAEA/QD9
+AAIA/gD/AAEA/wD/AAIAAAEBAQEAAQEBAQIAAgEDAQEAAwEDAQIABAEFAQEABQEFAQIABgEHAQEA
+BwEHAQIACAEJAQEACQEJAQIACgELAQEACwELAQIADAENAQEADQENAQIADgEPAQEADwEPAQIAEAER
+AQEAEQERAQIAEgETAQEAEwETAQIAFAEVAQEAFQEVAQIAFgEXAQEAFwEXAQIAGAEZAQEAGQEZAQIA
+GgEbAQEAGwEbAQIAHAEdAQEAHQEdAQIAHgEfAQEAHwEfAQIAIAEhAQEAIQEhAQIAIgEjAQEAIwEj
+AQIAJAElAQEAJQElAQIAJgEnAQEAJwEnAQIAKAEpAQEAKQEpAQIAKgErAQEAKwErAQIALAEtAQEA
+LQEtAQIALgEvAQEALwEvAQIAMAExAQEAMQExAQIAMgEzAQEAMwEzAQIANAE1AQEANQE1AQIANgE3
+AQEANwE3AQIAOAE5AQEAOQE5AQIAOgE7AQEAOwE7AQIAPAE9AQEAPQE9AQIAPgE/AQEAPwE/AQIA
+QAFBAQEAQQFBAQIAQgFDAQEAQwFDAQIARAFFAQEARQFFAQIARgFHAQEARwFHAQIASAFJAQEASQFJ
+AQIASgFLAQEASwFLAQIATAFNAQEATQFNAQIATgFPAQEATwFPAQIAVAFRAQIAVQFTAQEAVgFTAQIA
+VwFVAQSAAAABAAAApSUgWwAAAAAAAJsKAAAEAAAAAAAAAAAAAAB9AL8KAAAAABEAAAAAAAAAAAAA
+AIYARhsAAAAABAAAAAAAAAAAAAAAfQDnGwAAAAANAAAAAAAAAAAAAACPAFkcAAAAABEAAAAAAAAA
+AAAAAIYAagkAAAAAAAAAAAEAAAD4HAAABwAEACcALgAAAAA8TW9kdWxlPgBnZXRfTUdBAHNldF9N
+R0EAZ2V0X0FPQQBzZXRfQU9BAGdldF9QQUIAc2V0X1BBQgBnZXRfVEhCAHNldF9USEIAZ2V0X0JP
+QgBzZXRfQk9CAGdldF9FVEIAc2V0X0VUQgBnZXRfUlVCAHNldF9SVUIAZ2V0X0NSQwBzZXRfQ1JD
+AGdldF9DQUQAc2V0X0NBRABnZXRfTUFEAHNldF9NQUQAZ2V0X05BRABzZXRfTkFEAGdldF9CQkQA
+c2V0X0JCRABnZXRfU0JEAHNldF9TQkQAZ2V0X1hDRABzZXRfWENEAGdldF9BRUQAc2V0X0FFRABn
+ZXRfU0dEAHNldF9TR0QAZ2V0X0JIRABzZXRfQkhEAGdldF9LSUQAc2V0X0tJRABnZXRfRkpEAHNl
+dF9GSkQAZ2V0X0hLRABzZXRfSEtEAGdldF9NS0QAc2V0X01LRABnZXRfQU1EAHNldF9BTUQAZ2V0
+X0JNRABzZXRfQk1EAGdldF9HTUQAc2V0X0dNRABnZXRfSk1EAHNldF9KTUQAZ2V0X0JORABzZXRf
+Qk5EAGdldF9UTkQAc2V0X1RORABnZXRfVk5EAHNldF9WTkQAZ2V0X0pPRABzZXRfSk9EAGdldF9J
+UUQAc2V0X0lRRABnZXRfTFJEAHNldF9MUkQAZ2V0X1NSRABzZXRfU1JEAGdldF9CU0QAc2V0X0JT
+RABnZXRfUlNEAHNldF9SU0QAZ2V0X1VTRABzZXRfVVNEAGdldF9UVEQAc2V0X1RURABnZXRfQVVE
+AHNldF9BVUQAZ2V0X1RWRABzZXRfVFZEAGdldF9LV0QAc2V0X0tXRABnZXRfVFdEAHNldF9UV0QA
+Z2V0X0dZRABzZXRfR1lEAGdldF9LWUQAc2V0X0tZRABnZXRfTFlEAHNldF9MWUQAZ2V0X0JaRABz
+ZXRfQlpEAGdldF9EWkQAc2V0X0RaRABnZXRfTlpEAHNldF9OWkQAZ2V0X1NMRQBzZXRfU0xFAGdl
+dF9DVkUAc2V0X0NWRQBnZXRfWEFGAHNldF9YQUYAZ2V0X0NERgBzZXRfQ0RGAGdldF9DSEYAc2V0
+X0NIRgBnZXRfQklGAHNldF9CSUYAZ2V0X0RKRgBzZXRfREpGAGdldF9DTEYAc2V0X0NMRgBnZXRf
+S01GAHNldF9LTUYAZ2V0X0dORgBzZXRfR05GAGdldF9YT0YAc2V0X1hPRgBnZXRfWFBGAHNldF9Y
+UEYAZ2V0X0hVRgBzZXRfSFVGAGdldF9SV0YAc2V0X1JXRgBnZXRfWENHAHNldF9YQ0cAZ2V0X1NE
+RwBzZXRfU0RHAGdldF9BTkcAc2V0X0FORwBnZXRfSFRHAHNldF9IVEcAZ2V0X0FXRwBzZXRfQVdH
+AGdldF9aV0cAc2V0X1pXRwBnZXRfUFlHAHNldF9QWUcAZ2V0X1VBSABzZXRfVUFIAGdldF9DTkgA
+c2V0X0NOSABnZXRfTEFLAHNldF9MQUsAZ2V0X1NFSwBzZXRfU0VLAGdldF9QR0sAc2V0X1BHSwBn
+ZXRfREtLAHNldF9ES0sAZ2V0X01NSwBzZXRfTU1LAGdldF9GT0sAc2V0X0ZPSwBnZXRfTk9LAHNl
+dF9OT0sAZ2V0X0hSSwBzZXRfSFJLAGdldF9JU0sAc2V0X0lTSwBnZXRfTVdLAHNldF9NV0sAZ2V0
+X0NaSwBzZXRfQ1pLAGdldF9NREwAc2V0X01ETABnZXRfR0VMAHNldF9HRUwAZ2V0X0FMTABzZXRf
+QUxMAGdldF9TTEwAc2V0X1NMTABnZXRfSE5MAHNldF9ITkwAZ2V0X0JSTABzZXRfQlJMAGdldF9M
+U0wAc2V0X0xTTABnZXRfWldMAHNldF9aV0wAZ2V0X1NaTABzZXRfU1pMAGdldF9CQU0Ac2V0X0JB
+TQBnZXRfUEVOAHNldF9QRU4AZ2V0X0FGTgBzZXRfQUZOAGdldF9CR04Ac2V0X0JHTgBnZXRfTkdO
+AHNldF9OR04AZ2V0X1BMTgBzZXRfUExOAGdldF9ST04Ac2V0X1JPTgBnZXRfRVJOAHNldF9FUk4A
+Z2V0X0JUTgBzZXRfQlROAGdldF9TVE4Ac2V0X1NUTgBnZXRfTVhOAHNldF9NWE4AZ2V0X0JZTgBz
+ZXRfQllOAGdldF9BWk4Ac2V0X0FaTgBnZXRfTVpOAHNldF9NWk4AZ2V0X05JTwBzZXRfTklPAGdl
+dF9HQlAAc2V0X0dCUABnZXRfTEJQAHNldF9MQlAAZ2V0X0pFUABzZXRfSkVQAGdldF9FR1AAc2V0
+X0VHUABnZXRfR0dQAHNldF9HR1AAZ2V0X1BIUABzZXRfUEhQAGdldF9TSFAAc2V0X1NIUABnZXRf
+R0lQAHNldF9HSVAAZ2V0X0ZLUABzZXRfRktQAGdldF9DTFAAc2V0X0NMUABnZXRfSU1QAHNldF9J
+TVAAZ2V0X0NPUABzZXRfQ09QAGdldF9ET1AAc2V0X0RPUABnZXRfTU9QAHNldF9NT1AAZ2V0X1RP
+UABzZXRfVE9QAGdldF9TU1AAc2V0X1NTUABnZXRfQ1VQAHNldF9DVVAAZ2V0X0JXUABzZXRfQldQ
+AGdldF9TWVAAc2V0X1NZUABnZXRfR1RRAHNldF9HVFEAZ2V0X1FBUgBzZXRfUUFSAGdldF9TQVIA
+c2V0X1NBUgBnZXRfWkFSAHNldF9aQVIAZ2V0X1NDUgBzZXRfU0NSAGdldF9JRFIAc2V0X0lEUgBn
+ZXRfWERSAHNldF9YRFIAZ2V0X1lFUgBzZXRfWUVSAGdldF9LSFIAc2V0X0tIUgBnZXRfTEtSAHNl
+dF9MS1IAZ2V0X1BLUgBzZXRfUEtSAGdldF9PTVIAc2V0X09NUgBnZXRfSU5SAHNldF9JTlIAZ2V0
+X05QUgBzZXRfTlBSAGdldF9JUlIAc2V0X0lSUgBnZXRfRVVSAHNldF9FVVIAZ2V0X01VUgBzZXRf
+TVVSAGdldF9NVlIAc2V0X01WUgBnZXRfTVlSAHNldF9NWVIAZ2V0X0tFUwBzZXRfS0VTAGdldF9W
+RVMAc2V0X1ZFUwBnZXRfS0dTAHNldF9LR1MAZ2V0X0dIUwBzZXRfR0hTAGdldF9USlMAc2V0X1RK
+UwBnZXRfSUxTAHNldF9JTFMAZ2V0X1NPUwBzZXRfU09TAGdldF9BUlMAc2V0X0FSUwBNaWNyb3Nv
+ZnQuU3FsU2VydmVyLk1hbmFnZWREVFMAZ2V0X1RaUwBzZXRfVFpTAGdldF9VWlMAc2V0X1VaUwBn
+ZXRfQkRUAHNldF9CRFQAZ2V0X1RNVABzZXRfVE1UAGdldF9NTlQAc2V0X01OVABnZXRfV1NUAHNl
+dF9XU1QAZ2V0X0taVABzZXRfS1pUAGdldF9NUlUAc2V0X01SVQBnZXRfVVlVAHNldF9VWVUAZ2V0
+X1ZVVgBzZXRfVlVWAGdldF9aTVcAc2V0X1pNVwBnZXRfS1JXAHNldF9LUlcAZ2V0X1VHWABzZXRf
+VUdYAGdldF9DTlkAc2V0X0NOWQBnZXRfSlBZAHNldF9KUFkAZ2V0X1RSWQBzZXRfVFJZAHZhbHVl
+X18ATW9uZXlEYXRhAFNUXzMxMGZiNWE2ZmJkZTQ5Yjc4NWI1ZjIwOTEyMTI5N2JiAG1zY29ybGli
+ADxNR0E+a19fQmFja2luZ0ZpZWxkADxBT0E+a19fQmFja2luZ0ZpZWxkADxQQUI+a19fQmFja2lu
+Z0ZpZWxkADxUSEI+a19fQmFja2luZ0ZpZWxkADxCT0I+a19fQmFja2luZ0ZpZWxkADxFVEI+a19f
+QmFja2luZ0ZpZWxkADxSVUI+a19fQmFja2luZ0ZpZWxkADxDUkM+a19fQmFja2luZ0ZpZWxkADxD
+QUQ+a19fQmFja2luZ0ZpZWxkADxNQUQ+a19fQmFja2luZ0ZpZWxkADxOQUQ+a19fQmFja2luZ0Zp
+ZWxkADxCQkQ+a19fQmFja2luZ0ZpZWxkADxTQkQ+a19fQmFja2luZ0ZpZWxkADxYQ0Q+a19fQmFj
+a2luZ0ZpZWxkADxBRUQ+a19fQmFja2luZ0ZpZWxkADxTR0Q+a19fQmFja2luZ0ZpZWxkADxCSEQ+
+a19fQmFja2luZ0ZpZWxkADxLSUQ+a19fQmFja2luZ0ZpZWxkADxGSkQ+a19fQmFja2luZ0ZpZWxk
+ADxIS0Q+a19fQmFja2luZ0ZpZWxkADxNS0Q+a19fQmFja2luZ0ZpZWxkADxBTUQ+a19fQmFja2lu
+Z0ZpZWxkADxCTUQ+a19fQmFja2luZ0ZpZWxkADxHTUQ+a19fQmFja2luZ0ZpZWxkADxKTUQ+a19f
+QmFja2luZ0ZpZWxkADxCTkQ+a19fQmFja2luZ0ZpZWxkADxUTkQ+a19fQmFja2luZ0ZpZWxkADxW
+TkQ+a19fQmFja2luZ0ZpZWxkADxKT0Q+a19fQmFja2luZ0ZpZWxkADxJUUQ+a19fQmFja2luZ0Zp
+ZWxkADxMUkQ+a19fQmFja2luZ0ZpZWxkADxTUkQ+a19fQmFja2luZ0ZpZWxkADxCU0Q+a19fQmFj
+a2luZ0ZpZWxkADxSU0Q+a19fQmFja2luZ0ZpZWxkADxVU0Q+a19fQmFja2luZ0ZpZWxkADxUVEQ+
+a19fQmFja2luZ0ZpZWxkADxBVUQ+a19fQmFja2luZ0ZpZWxkADxUVkQ+a19fQmFja2luZ0ZpZWxk
+ADxLV0Q+a19fQmFja2luZ0ZpZWxkADxUV0Q+a19fQmFja2luZ0ZpZWxkADxHWUQ+a19fQmFja2lu
+Z0ZpZWxkADxLWUQ+a19fQmFja2luZ0ZpZWxkADxMWUQ+a19fQmFja2luZ0ZpZWxkADxCWkQ+a19f
+QmFja2luZ0ZpZWxkADxEWkQ+a19fQmFja2luZ0ZpZWxkADxOWkQ+a19fQmFja2luZ0ZpZWxkADxT
+TEU+a19fQmFja2luZ0ZpZWxkADxDVkU+a19fQmFja2luZ0ZpZWxkADxYQUY+a19fQmFja2luZ0Zp
+ZWxkADxDREY+a19fQmFja2luZ0ZpZWxkADxDSEY+a19fQmFja2luZ0ZpZWxkADxCSUY+a19fQmFj
+a2luZ0ZpZWxkADxESkY+a19fQmFja2luZ0ZpZWxkADxDTEY+a19fQmFja2luZ0ZpZWxkADxLTUY+
+a19fQmFja2luZ0ZpZWxkADxHTkY+a19fQmFja2luZ0ZpZWxkADxYT0Y+a19fQmFja2luZ0ZpZWxk
+ADxYUEY+a19fQmFja2luZ0ZpZWxkADxIVUY+a19fQmFja2luZ0ZpZWxkADxSV0Y+a19fQmFja2lu
+Z0ZpZWxkADxYQ0c+a19fQmFja2luZ0ZpZWxkADxTREc+a19fQmFja2luZ0ZpZWxkADxBTkc+a19f
+QmFja2luZ0ZpZWxkADxIVEc+a19fQmFja2luZ0ZpZWxkADxBV0c+a19fQmFja2luZ0ZpZWxkADxa
+V0c+a19fQmFja2luZ0ZpZWxkADxQWUc+a19fQmFja2luZ0ZpZWxkADxVQUg+a19fQmFja2luZ0Zp
+ZWxkADxDTkg+a19fQmFja2luZ0ZpZWxkADxMQUs+a19fQmFja2luZ0ZpZWxkADxTRUs+a19fQmFj
+a2luZ0ZpZWxkADxQR0s+a19fQmFja2luZ0ZpZWxkADxES0s+a19fQmFja2luZ0ZpZWxkADxNTUs+
+a19fQmFja2luZ0ZpZWxkADxGT0s+a19fQmFja2luZ0ZpZWxkADxOT0s+a19fQmFja2luZ0ZpZWxk
+ADxIUks+a19fQmFja2luZ0ZpZWxkADxJU0s+a19fQmFja2luZ0ZpZWxkADxNV0s+a19fQmFja2lu
+Z0ZpZWxkADxDWks+a19fQmFja2luZ0ZpZWxkADxNREw+a19fQmFja2luZ0ZpZWxkADxHRUw+a19f
+QmFja2luZ0ZpZWxkADxBTEw+a19fQmFja2luZ0ZpZWxkADxTTEw+a19fQmFja2luZ0ZpZWxkADxI
+Tkw+a19fQmFja2luZ0ZpZWxkADxCUkw+a19fQmFja2luZ0ZpZWxkADxMU0w+a19fQmFja2luZ0Zp
+ZWxkADxaV0w+a19fQmFja2luZ0ZpZWxkADxTWkw+a19fQmFja2luZ0ZpZWxkADxCQU0+a19fQmFj
+a2luZ0ZpZWxkADxQRU4+a19fQmFja2luZ0ZpZWxkADxBRk4+a19fQmFja2luZ0ZpZWxkADxCR04+
+a19fQmFja2luZ0ZpZWxkADxOR04+a19fQmFja2luZ0ZpZWxkADxQTE4+a19fQmFja2luZ0ZpZWxk
+ADxST04+a19fQmFja2luZ0ZpZWxkADxFUk4+a19fQmFja2luZ0ZpZWxkADxCVE4+a19fQmFja2lu
+Z0ZpZWxkADxTVE4+a19fQmFja2luZ0ZpZWxkADxNWE4+a19fQmFja2luZ0ZpZWxkADxCWU4+a19f
+QmFja2luZ0ZpZWxkADxBWk4+a19fQmFja2luZ0ZpZWxkADxNWk4+a19fQmFja2luZ0ZpZWxkADxO
+SU8+a19fQmFja2luZ0ZpZWxkADxHQlA+a19fQmFja2luZ0ZpZWxkADxMQlA+a19fQmFja2luZ0Zp
+ZWxkADxKRVA+a19fQmFja2luZ0ZpZWxkADxFR1A+a19fQmFja2luZ0ZpZWxkADxHR1A+a19fQmFj
+a2luZ0ZpZWxkADxQSFA+a19fQmFja2luZ0ZpZWxkADxTSFA+a19fQmFja2luZ0ZpZWxkADxHSVA+
+a19fQmFja2luZ0ZpZWxkADxGS1A+a19fQmFja2luZ0ZpZWxkADxDTFA+a19fQmFja2luZ0ZpZWxk
+ADxJTVA+a19fQmFja2luZ0ZpZWxkADxDT1A+a19fQmFja2luZ0ZpZWxkADxET1A+a19fQmFja2lu
+Z0ZpZWxkADxNT1A+a19fQmFja2luZ0ZpZWxkADxUT1A+a19fQmFja2luZ0ZpZWxkADxTU1A+a19f
+QmFja2luZ0ZpZWxkADxDVVA+a19fQmFja2luZ0ZpZWxkADxCV1A+a19fQmFja2luZ0ZpZWxkADxT
+WVA+a19fQmFja2luZ0ZpZWxkADxHVFE+a19fQmFja2luZ0ZpZWxkADxRQVI+a19fQmFja2luZ0Zp
+ZWxkADxTQVI+a19fQmFja2luZ0ZpZWxkADxaQVI+a19fQmFja2luZ0ZpZWxkADxTQ1I+a19fQmFj
+a2luZ0ZpZWxkADxJRFI+a19fQmFja2luZ0ZpZWxkADxYRFI+a19fQmFja2luZ0ZpZWxkADxZRVI+
+a19fQmFja2luZ0ZpZWxkADxLSFI+a19fQmFja2luZ0ZpZWxkADxMS1I+a19fQmFja2luZ0ZpZWxk
+ADxQS1I+a19fQmFja2luZ0ZpZWxkADxPTVI+a19fQmFja2luZ0ZpZWxkADxJTlI+a19fQmFja2lu
+Z0ZpZWxkADxOUFI+a19fQmFja2luZ0ZpZWxkADxJUlI+a19fQmFja2luZ0ZpZWxkADxFVVI+a19f
+QmFja2luZ0ZpZWxkADxNVVI+a19fQmFja2luZ0ZpZWxkADxNVlI+a19fQmFja2luZ0ZpZWxkADxN
+WVI+a19fQmFja2luZ0ZpZWxkADxLRVM+a19fQmFja2luZ0ZpZWxkADxWRVM+a19fQmFja2luZ0Zp
+ZWxkADxLR1M+a19fQmFja2luZ0ZpZWxkADxHSFM+a19fQmFja2luZ0ZpZWxkADxUSlM+a19fQmFj
+a2luZ0ZpZWxkADxJTFM+a19fQmFja2luZ0ZpZWxkADxTT1M+a19fQmFja2luZ0ZpZWxkADxBUlM+
+a19fQmFja2luZ0ZpZWxkADxUWlM+a19fQmFja2luZ0ZpZWxkADxVWlM+a19fQmFja2luZ0ZpZWxk
+ADxCRFQ+a19fQmFja2luZ0ZpZWxkADxUTVQ+a19fQmFja2luZ0ZpZWxkADxNTlQ+a19fQmFja2lu
+Z0ZpZWxkADxXU1Q+a19fQmFja2luZ0ZpZWxkADxLWlQ+a19fQmFja2luZ0ZpZWxkADxNUlU+a19f
+QmFja2luZ0ZpZWxkADxVWVU+a19fQmFja2luZ0ZpZWxkADxWVVY+a19fQmFja2luZ0ZpZWxkADxa
+TVc+a19fQmFja2luZ0ZpZWxkADxLUlc+a19fQmFja2luZ0ZpZWxkADxVR1g+a19fQmFja2luZ0Zp
+ZWxkADxDTlk+a19fQmFja2luZ0ZpZWxkADxKUFk+a19fQmFja2luZ0ZpZWxkADxUUlk+a19fQmFj
+a2luZ0ZpZWxkADxyYXRlcz5rX19CYWNraW5nRmllbGQAZGVmYXVsdEluc3RhbmNlAGdldF9NZXNz
+YWdlAFZhcmlhYmxlAERvdWJsZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBN
+aWNyb3NvZnQuU3FsU2VydmVyLkR0cy5SdW50aW1lAFR5cGUARmFpbHVyZQBnZXRfQ3VsdHVyZQBz
+ZXRfQ3VsdHVyZQByZXNvdXJjZUN1bHR1cmUAVlNUQVJUU2NyaXB0T2JqZWN0TW9kZWxCYXNlAEFw
+cGxpY2F0aW9uU2V0dGluZ3NCYXNlAEVkaXRvckJyb3dzYWJsZVN0YXRlAENvbXBpbGVyR2VuZXJh
+dGVkQXR0cmlidXRlAERlYnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1dGUARGVidWdnYWJsZUF0dHJp
+YnV0ZQBFZGl0b3JCcm93c2FibGVBdHRyaWJ1dGUAQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3Nl
+bWJseVRyYWRlbWFya0F0dHJpYnV0ZQBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUAQXNzZW1ibHlD
+b25maWd1cmF0aW9uQXR0cmlidXRlAEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQ29tcGls
+YXRpb25SZWxheGF0aW9uc0F0dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1i
+bHlDb3B5cmlnaHRBdHRyaWJ1dGUAU1NJU1NjcmlwdFRhc2tFbnRyeVBvaW50QXR0cmlidXRlAEFz
+c2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0dHJpYnV0ZQBzZXRf
+VmFsdWUAdmFsdWUAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBEb3dubG9hZFN0cmluZwBUb1N0
+cmluZwBNaWNyb3NvZnQuU3FsU2VydmVyLlNjcmlwdFRhc2sATWljcm9zb2Z0LlNxbFNlcnZlci5E
+dHMuVGFza3MuU2NyaXB0VGFzawBTY3JpcHRPYmplY3RNb2RlbABTeXN0ZW0uQ29tcG9uZW50TW9k
+ZWwAU1RfMzEwZmI1YTZmYmRlNDliNzg1YjVmMjA5MTIxMjk3YmIuZGxsAGdldF9JdGVtAFN5c3Rl
+bQBFbnVtAHJlc291cmNlTWFuAFNjcmlwdE1haW4AU3lzdGVtLkNvbmZpZ3VyYXRpb24AU3lzdGVt
+Lkdsb2JhbGl6YXRpb24AU3lzdGVtLlJlZmxlY3Rpb24AZ2V0X0lubmVyRXhjZXB0aW9uAE5ld3Rv
+bnNvZnQuSnNvbgBDdWx0dXJlSW5mbwBnZXRfUmVzb3VyY2VNYW5hZ2VyAEV2ZW50c09iamVjdFdy
+YXBwZXIARmlyZUVycm9yAC5jdG9yAC5jY3RvcgBTeXN0ZW0uRGlhZ25vc3RpY3MAU3lzdGVtLlJ1
+bnRpbWUuQ29tcGlsZXJTZXJ2aWNlcwBTeXN0ZW0uUmVzb3VyY2VzAFNUXzMxMGZiNWE2ZmJkZTQ5
+Yjc4NWI1ZjIwOTEyMTI5N2JiLlByb3BlcnRpZXMuUmVzb3VyY2VzLnJlc291cmNlcwBEZWJ1Z2dp
+bmdNb2RlcwBTVF8zMTBmYjVhNmZiZGU0OWI3ODViNWYyMDkxMjEyOTdiYi5Qcm9wZXJ0aWVzAGdl
+dF9WYXJpYWJsZXMAUmF0ZXMAZ2V0X3JhdGVzAHNldF9yYXRlcwBTZXR0aW5ncwBTdWNjZXNzAGdl
+dF9EdHMAU2NyaXB0UmVzdWx0cwBnZXRfRXZlbnRzAENvbmNhdABEZXNlcmlhbGl6ZU9iamVjdABT
+eXN0ZW0uTmV0AGdldF9EZWZhdWx0AHNldF9UYXNrUmVzdWx0AFdlYkNsaWVudABKc29uQ29udmVy
+dABnZXRfQXNzZW1ibHkAAAAAAE1oAHQAdABwAHMAOgAvAC8AbwBwAGUAbgBlAC4AZQByAC0AYQBw
+AGkALgBjAG8AbQAvAHYANgAvAGwAYQB0AGUAcwB0AC8AUwBFAEsAASVVAHMAZQByADoAOgBFAHgA
+YwBoAGEAbgBnAGUAUgBhAHQAZQAAJVUAcwBlAHIAOgA6AEUAcgByAG8AcgBNAGUAcwBzAGEAZwBl
 AAAZRQB4AGMAaABhAG4AZwBlAFIAYQB0AGUAAAEAcVMAVABfADMAMQAwAGYAYgA1AGEANgBmAGIA
 ZABlADQAOQBiADcAOAA1AGIANQBmADIAMAA5ADEAMgAxADIAOQA3AGIAYgAuAFAAcgBvAHAAZQBy
-AHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAAAA+Wqg5vMtlGo4nn7OVnoTQABCABAQgDIAAB
-BSABARERBCABAQ4FIAEBEVUJBwYODggIDRI9BCABDg4EIAEIDgMgAAgFIAIIDggFIAIOCAgEAAAS
-UQYAAg0OEnEEIAASdQQgABJ5BSABEn0cBCABARwDIAAOBQACDg4OBgABEYCJDgQgABI9BSAAEoCN
-CCAFAggODg4ICAABEoCREYCVBSAAEoCZByACAQ4SgJkIt3pcVhk04IkIiYRdzYCAzJEEAAAAAAQB
-AAAAAwYSTQMGElEDBhIQAgYIAwYRFAQAABJNBQABARJRBAAAEhADAAABBAgAEk0ECAASUQQIABIQ
-CAEACAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhjZXB0aW9uVGhyb3dzAQgBAAIAAAAAACgBACNTVF8z
-MTBmYjVhNmZiZGU0OWI3ODViNWYyMDkxMjEyOTdiYgAABQEAAAAAFgEAEUNvcHlyaWdodCBAICAy
-MDI2AABJAQAaLk5FVEZyYW1ld29yayxWZXJzaW9uPXY0LjcBAFQOFEZyYW1ld29ya0Rpc3BsYXlO
-YW1lEi5ORVQgRnJhbWV3b3JrIDQuNwC0AAAAzsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMu
-UmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJh
-bCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRp
-bWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAAADEAAAAAAAAAAAAAGjEAAAAgAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAwxAAAAAAAAAAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwA
-AAAAAP8lACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAAAAAAWdjCryHdaUS3ZPJ0lczrYwAEIAEBCAMg
+AAEFIAEBEREEIAEBDgUgAQERWQYHAw4NEkUEIAEODgYQAQEeAA4ECgESCAQgABJtBCAAEnEFIAES
+dRwEIAEBHAMgAA4EIAASRQUAAg4ODgUgABKAgQggBQIIDg4OCAgAARKAhRGAiQUgABKAjQcgAgEO
+EoCNCLd6XFYZNOCJCImEXc2AgMyRCDCtT+aypq7tBAAAAAAEAQAAAAMGEgwCBggCBgwDBhJRAwYS
+VQMGEhgDBhEcBCAAEgwFIAEBEgwDIAAIAyAADAQgAQEMBAAAElEEAAASVQUAAQESVQQAABIYAwAA
+AQQoABIMAygACAMoAAwECAASUQQIABJVBAgAEhgIAQAIAAAAAAAeAQABAFQCFldyYXBOb25FeGNl
+cHRpb25UaHJvd3MBCAEAAgAAAAAAKAEAI1NUXzMxMGZiNWE2ZmJkZTQ5Yjc4NWI1ZjIwOTEyMTI5
+N2JiAAAFAQAAAAAWAQARQ29weXJpZ2h0IEAgIDIwMjYAAEkBABouTkVURnJhbWV3b3JrLFZlcnNp
+b249djQuNwEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUSLk5FVCBGcmFtZXdvcmsgNC43AAC0AAAA
+zsrvvgEAAACRAAAAbFN5c3RlbS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBW
+ZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYx
+OTM0ZTA4OSNTeXN0ZW0uUmVzb3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBB
+RFBBRFC0AAAASIUAAAAAAAAAAAAAYoUAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFSFAAAAAAAA
+AAAAAAAAX0NvckRsbE1haW4AbXNjb3JlZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAA
-AEgAAABYQAAAGgQAAAAAAAAAAAAAGgQ0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8A
-AAAAAL0E7/4AAAEAAAABAClSpSUAAAEAKVKlJT8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABE
-AAAAAQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8A
-bgAAAAAAAACwBHoDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAFYDAAABADAAMAAw
-ADAAMAA0AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAAAiAAEAAQBDAG8AbQBwAGEA
-bgB5AE4AYQBtAGUAAAAAAAAAAABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAA
-AAAAUwBUAF8AMwAxADAAZgBiADUAYQA2AGYAYgBkAGUANAA5AGIANwA4ADUAYgA1AGYAMgAwADkA
-MQAyADEAMgA5ADcAYgBiAAAAPgAPAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAu
-ADkANgAzADcALgAyADEAMAAzADMAAAAAAHAAKAABAEkAbgB0AGUAcgBuAGEAbABOAGEAbQBlAAAA
-UwBUAF8AMwAxADAAZgBiADUAYQA2AGYAYgBkAGUANAA5AGIANwA4ADUAYgA1AGYAMgAwADkAMQAy
-ADEAMgA5ADcAYgBiAC4AZABsAGwAAABIABIAAQBMAGUAZwBhAGwAQwBvAHAAeQByAGkAZwBoAHQA
-AABDAG8AcAB5AHIAaQBnAGgAdAAgAEAAIAAgADIAMAAyADYAAAAqAAEAAQBMAGUAZwBhAGwAVABy
-AGEAZABlAG0AYQByAGsAcwAAAAAAAAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4A
-YQBtAGUAAABTAFQAXwAzADEAMABmAGIANQBhADYAZgBiAGQAZQA0ADkAYgA3ADgANQBiADUAZgAy
-ADAAOQAxADIAMQAyADkANwBiAGIALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0A
-ZQAAAAAAUwBUAF8AMwAxADAAZgBiADUAYQA2AGYAYgBkAGUANAA5AGIANwA4ADUAYgA1AGYAMgAw
-ADkAMQAyADEAMgA5ADcAYgBiAAAAQgAPAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAA
-MQAuADAALgA5ADYAMwA3AC4AMgAxADAAMwAzAAAAAABGAA8AAQBBAHMAcwBlAG0AYgBsAHkAIABW
-AGUAcgBzAGkAbwBuAAAAMQAuADAALgA5ADYAMwA3AC4AMgAxADAAMwAzAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAADAAAACwxAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAEAEAAAABgAAIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAA
+AAAAAAAAAAAAAAEAAAAAAEgAAABYoAAAGgQAAAAAAAAAAAAAGgQ0AAAAVgBTAF8AVgBFAFIAUwBJ
+AE8ATgBfAEkATgBGAE8AAAAAAL0E7/4AAAEAAAABACBbpSUAAAEAIFulJT8AAAAAAAAABAAAAAIA
+AAAAAAAAAAAAAAAAAABEAAAAAQBWAGEAcgBGAGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBh
+AG4AcwBsAGEAdABpAG8AbgAAAAAAAACwBHoDAAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYA
+bwAAAFYDAAABADAAMAAwADAAMAA0AGIAMAAAABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAAAi
+AAEAAQBDAG8AbQBwAGEAbgB5AE4AYQBtAGUAAAAAAAAAAABwACQAAQBGAGkAbABlAEQAZQBzAGMA
+cgBpAHAAdABpAG8AbgAAAAAAUwBUAF8AMwAxADAAZgBiADUAYQA2AGYAYgBkAGUANAA5AGIANwA4
+ADUAYgA1AGYAMgAwADkAMQAyADEAMgA5ADcAYgBiAAAAPgAPAAEARgBpAGwAZQBWAGUAcgBzAGkA
+bwBuAAAAAAAxAC4AMAAuADkANgAzADcALgAyADMAMwAyADgAAAAAAHAAKAABAEkAbgB0AGUAcgBu
+AGEAbABOAGEAbQBlAAAAUwBUAF8AMwAxADAAZgBiADUAYQA2AGYAYgBkAGUANAA5AGIANwA4ADUA
+YgA1AGYAMgAwADkAMQAyADEAMgA5ADcAYgBiAC4AZABsAGwAAABIABIAAQBMAGUAZwBhAGwAQwBv
+AHAAeQByAGkAZwBoAHQAAABDAG8AcAB5AHIAaQBnAGgAdAAgAEAAIAAgADIAMAAyADYAAAAqAAEA
+AQBMAGUAZwBhAGwAVAByAGEAZABlAG0AYQByAGsAcwAAAAAAAAAAAHgAKAABAE8AcgBpAGcAaQBu
+AGEAbABGAGkAbABlAG4AYQBtAGUAAABTAFQAXwAzADEAMABmAGIANQBhADYAZgBiAGQAZQA0ADkA
+YgA3ADgANQBiADUAZgAyADAAOQAxADIAMQAyADkANwBiAGIALgBkAGwAbAAAAGgAJAABAFAAcgBv
+AGQAdQBjAHQATgBhAG0AZQAAAAAAUwBUAF8AMwAxADAAZgBiADUAYQA2AGYAYgBkAGUANAA5AGIA
+NwA4ADUAYgA1AGYAMgAwADkAMQAyADEAMgA5ADcAYgBiAAAAQgAPAAEAUAByAG8AZAB1AGMAdABW
+AGUAcgBzAGkAbwBuAAAAMQAuADAALgA5ADYAMwA3AC4AMgAzADMAMgA4AAAAAABGAA8AAQBBAHMA
+cwBlAG0AYgBsAHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgA5ADYAMwA3AC4AMgAzADMAMgA4
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -805,8 +1397,16 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAADAAAAHQ1AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AA==</BinaryItem>
         </ScriptProject>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -842,6 +1442,23 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{E23092C0-5AD2-4FAD-8763-8AC14BFA3939}"
           SQLTask:SqlStatementSource="USE BookDW;&#xA;IF OBJECT_ID('dbo.BooksWithCategory', 'U') IS NULL&#xA;BEGIN&#xA;    CREATE TABLE BooksWithCategory (&#xA;        BookId INT,&#xA;        Title NVARCHAR(100),&#xA;        Author NVARCHAR(100),&#xA;        CategoryName NVARCHAR(50),&#xA;        PriceSEK FLOAT,&#xA;        PriceGBP FLOAT&#xA;    );&#xA;END&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{15442754-6658-4DAA-8BD2-C70A28BB19F4}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9C912194-E073-4BF7-A59C-06BE2D82AC65}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.BooksWithCategory;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1107,9 +1724,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                   <inputColumns>
                     <inputColumn
                       refId="Package\ImportBooksAndCategories\Data Conversion Excel - BookID to INT.Inputs[Data Conversion Input].Columns[BookId]"
-                      cachedDataType="i4"
+                      cachedDataType="r8"
                       cachedName="BookId"
-                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[BookId]" />
+                      lineageId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].Columns[BookId]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1134,7 +1751,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[BookId]}</property>
+                          name="SourceInputColumnLineageID">#{Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].Columns[BookId]}</property>
                         <property
                           dataType="System.Boolean"
                           description="Indicates whether the column uses the faster, locale-neutral parsing routines."
@@ -1169,11 +1786,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
               </outputs>
             </component>
             <component
-              refId="Package\ImportBooksAndCategories\Extract Books"
+              refId="Package\ImportBooksAndCategories\Excel Source"
               componentClassID="Microsoft.ExcelSource"
               contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Excel Source"
-              name="Extract Books"
+              name="Excel Source"
               usesDispositions="true"
               version="1">
               <properties>
@@ -1210,7 +1827,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
               </properties>
               <connections>
                 <connection
-                  refId="Package\ImportBooksAndCategories\Extract Books.Connections[OleDbConnection]"
+                  refId="Package\ImportBooksAndCategories\Excel Source.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
                   connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
                   description="The OLE DB runtime connection used to access the database."
@@ -1218,107 +1835,107 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
               </connections>
               <outputs>
                 <output
-                  refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output]"
+                  refId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output]"
                   name="Excel Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[BookId]"
+                      refId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].Columns[BookId]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].ExternalColumns[BookId]"
-                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[BookId]"
+                      externalMetadataColumnId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].ExternalColumns[BookId]"
+                      lineageId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].Columns[BookId]"
                       name="BookId"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[Title]"
+                      refId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].Columns[Title]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].ExternalColumns[Title]"
+                      externalMetadataColumnId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].ExternalColumns[Title]"
                       length="255"
-                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[Title]"
+                      lineageId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].Columns[Title]"
                       name="Title"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[Author]"
+                      refId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].Columns[Author]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].ExternalColumns[Author]"
+                      externalMetadataColumnId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].ExternalColumns[Author]"
                       length="255"
-                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[Author]"
+                      lineageId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].Columns[Author]"
                       name="Author"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[PriceSEK]"
+                      refId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].Columns[PriceSEK]"
                       dataType="cy"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].ExternalColumns[PriceSEK]"
-                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[PriceSEK]"
+                      externalMetadataColumnId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].ExternalColumns[PriceSEK]"
+                      lineageId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].Columns[PriceSEK]"
                       name="PriceSEK"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].ExternalColumns[BookId]"
+                      refId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].ExternalColumns[BookId]"
                       dataType="r8"
                       name="BookId" />
                     <externalMetadataColumn
-                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].ExternalColumns[Title]"
+                      refId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].ExternalColumns[Title]"
                       dataType="wstr"
                       length="255"
                       name="Title" />
                     <externalMetadataColumn
-                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].ExternalColumns[Author]"
+                      refId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].ExternalColumns[Author]"
                       dataType="wstr"
                       length="255"
                       name="Author" />
                     <externalMetadataColumn
-                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].ExternalColumns[PriceSEK]"
+                      refId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].ExternalColumns[PriceSEK]"
                       dataType="cy"
                       name="PriceSEK" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output]"
+                  refId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Error Output]"
                   isErrorOut="true"
                   name="Excel Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[BookId]"
+                      refId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Error Output].Columns[BookId]"
                       dataType="r8"
-                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[BookId]"
+                      lineageId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Error Output].Columns[BookId]"
                       name="BookId" />
                     <outputColumn
-                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[Title]"
+                      refId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Error Output].Columns[Title]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[Title]"
+                      lineageId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Error Output].Columns[Title]"
                       name="Title" />
                     <outputColumn
-                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[Author]"
+                      refId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Error Output].Columns[Author]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[Author]"
+                      lineageId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Error Output].Columns[Author]"
                       name="Author" />
                     <outputColumn
-                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[PriceSEK]"
+                      refId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Error Output].Columns[PriceSEK]"
                       dataType="cy"
-                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[PriceSEK]"
+                      lineageId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Error Output].Columns[PriceSEK]"
                       name="PriceSEK" />
                     <outputColumn
-                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      refId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1348,8 +1965,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
               <connections>
                 <connection
                   refId="Package\ImportBooksAndCategories\Extract Categories.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
-                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager 1]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
@@ -1990,7 +2607,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="Title"
-                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[Title]">
+                      lineageId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].Columns[Title]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -2007,7 +2624,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="Author"
-                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[Author]">
+                      lineageId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].Columns[Author]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -2023,7 +2640,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                       refId="Package\ImportBooksAndCategories\Sort By Excel BookID.Inputs[Sort Input].Columns[PriceSEK]"
                       cachedDataType="cy"
                       cachedName="PriceSEK"
-                      lineageId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[PriceSEK]">
+                      lineageId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].Columns[PriceSEK]">
                       <properties>
                         <property
                           dataType="System.Int32"
@@ -2072,7 +2689,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[Title]}</property>
+                          name="SortColumnId">#{Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].Columns[Title]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -2086,7 +2703,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[Author]}</property>
+                          name="SortColumnId">#{Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].Columns[Author]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -2099,7 +2716,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
                           containsID="true"
                           dataType="System.Int32"
                           description="Specifies the lineage identifier of the input column that is associated with this output column."
-                          name="SortColumnId">#{Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output].Columns[PriceSEK]}</property>
+                          name="SortColumnId">#{Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output].Columns[PriceSEK]}</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
@@ -2147,7 +2764,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
               refId="Package\ImportBooksAndCategories.Paths[Excel Source Output]"
               endId="Package\ImportBooksAndCategories\Data Conversion Excel - BookID to INT.Inputs[Data Conversion Input]"
               name="Excel Source Output"
-              startId="Package\ImportBooksAndCategories\Extract Books.Outputs[Excel Source Output]" />
+              startId="Package\ImportBooksAndCategories\Excel Source.Outputs[Excel Source Output]" />
             <path
               refId="Package\ImportBooksAndCategories.Paths[Flat File Source Output]"
               endId="Package\ImportBooksAndCategories\Data Conversion CSV - BookID to INT.Inputs[Data Conversion Input]"
@@ -2185,7 +2802,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
-          SQLTask:Connection="{C319CAAA-2826-4C52-8836-D7E4BEFE39C6}"
+          SQLTask:Connection="{9C912194-E073-4BF7-A59C-06BE2D82AC65}"
           SQLTask:SqlStatementSource="INSERT INTO dbo.SSIS_ErrorLog (PackageName, ErrorMessage, ErrorTime)&#xA;VALUES (?, ?, GETDATE())" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="NewParameterName"
@@ -2237,6 +2854,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
       DTS:ObjectName="Constraint 3"
       DTS:To="Package\Write To Error Log Table in Database"
       DTS:Value="1" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{E5B41131-DDF1-4B70-B47B-7A0B2FE77590}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Call API" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -2253,22 +2878,22 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="119,42"
           Id="Package\Call API"
-          TopLeft="355.833333333333,14.1666666666667" />
+          TopLeft="355.833333333333,60.8333333333334" />
         <NodeLayout
           Size="130,42"
           Id="Package\CreateDW"
-          TopLeft="357.5,115" />
+          TopLeft="357.5,161.666666666667" />
         <NodeLayout
           Size="140,42"
           Id="Package\CreateTable"
-          TopLeft="350.833333333333,240.833333333333" />
+          TopLeft="350.833333333333,287.5" />
         <NodeLayout
           Size="214,42"
           Id="Package\ImportBooksAndCategories"
-          TopLeft="313.333333333333,384.166666666667" />
+          TopLeft="312.666666666666,430.833333333334" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="421.666666666667,157">
+          TopLeft="421.666666666667,203.666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2290,18 +2915,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="420.583333333333,282.833333333333">
+          TopLeft="420.25,329.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,101.333333333333"
+              EndConnector="0,101.333333333334"
               Start="0,0"
-              End="0,93.8333333333333">
+              End="0,93.833333333334">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,93.8333333333333" />
+                    End="0,93.833333333334" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2312,7 +2937,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="418.916666666667,56.1666666666667">
+          TopLeft="418.916666666667,102.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2335,10 +2960,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="261,42"
           Id="Package\Write To Error Log Table in Database"
-          TopLeft="598.615384615385,99.2307692307692" />
+          TopLeft="598.615384615385,145.897435897436" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="433.833333333333,56.1666666666667">
+          TopLeft="433.833333333333,102.833333333333">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2372,6 +2997,44 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="519.333333333333,4.66666666666666" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="519.333333333333,25.6666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-44.5000000000004,56.1666666666667"
+              Start="0,0"
+              End="-37.0000000000004,56.1666666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-18.2500000000002,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18.2500000000002,0"
+                    Point2="-22.2500000000002,0"
+                    Point3="-22.2500000000002,4" />
+                  <mssgle:LineSegment
+                    End="-22.2500000000002,52.1666666666667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.2500000000002,52.1666666666667"
+                    Point2="-22.2500000000002,56.1666666666667"
+                    Point3="-26.2500000000002,56.1666666666667" />
+                  <mssgle:LineSegment
+                    End="-37.0000000000004,56.1666666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -2383,7 +3046,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         <NodeLayout
           Size="169,42"
           Id="Package\ImportBooksAndCategories\Extract Categories"
-          TopLeft="807,156" />
+          TopLeft="805,154" />
         <NodeLayout
           Size="269,42"
           Id="Package\ImportBooksAndCategories\Data Conversion Excel - BookID to INT"
@@ -2396,10 +3059,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
           Size="179,42"
           Id="Package\ImportBooksAndCategories\Sort By CSV BookID"
           TopLeft="793,362" />
-        <NodeLayout
-          Size="147,42"
-          Id="Package\ImportBooksAndCategories\Extract Books"
-          TopLeft="497,158" />
         <NodeLayout
           Size="265,42"
           Id="Package\ImportBooksAndCategories\Data Conversion CSV - BookID to INT"
@@ -2478,40 +3137,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\ImportBooksAndCategories.Paths[Flat File Source Output]"
-          TopLeft="888.5,198">
+          TopLeft="887.5,196">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,78"
+              EndConnector="0,80"
               Start="0,0"
-              End="0,70.5">
+              End="0,72.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,70.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\ImportBooksAndCategories.Paths[Excel Source Output]"
-          TopLeft="570.5,200">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,78"
-              Start="0,0"
-              End="0,70.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,70.5" />
+                    End="0,72.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2642,11 +3279,37 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="144,42"
+          Id="Package\ImportBooksAndCategories\Excel Source"
+          TopLeft="495,155" />
+        <EdgeLayout
+          Id="Package\ImportBooksAndCategories.Paths[Excel Source Output]"
+          TopLeft="568.75,197">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,81"
+              Start="0,0"
+              End="0,73.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\ImportBooksAndCategories\Extract Books">
+    design-time-name="Package\ImportBooksAndCategories\Save to BookDW">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2659,7 +3322,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</BinaryItem>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\ImportBooksAndCategories\Save to BookDW">
+    design-time-name="Package\ImportBooksAndCategories\Excel Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
