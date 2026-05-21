@@ -9,7 +9,7 @@
             try
             {
                 // url = länk till API
-                string url = "https://opene.er-api.com/v6/latest/SEK";
+                string url = "https://open.er-api.com/v6/latest/SEK";
 
                 // här hämtar vi resultatet från en GET
                 // WebClient = kopplar upp oss mot API
